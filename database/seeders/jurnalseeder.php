@@ -37,7 +37,7 @@ class jurnalseeder extends Seeder
             'nik' => '101210072',
             'password' => Hash::make('328328'),
             'posisi' => 'admin',
-            'area' => 'Cabang Pekalongan's
+            'area' => 'Cabang Pekalongan'
         ]);
     }
 }
