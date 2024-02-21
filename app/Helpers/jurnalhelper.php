@@ -24,6 +24,9 @@ class jurnalhelper
 
         $usernya->kukis = $kukis;
         $usernya->save();
+
         setcookie('kukis', $kukis, time() + 60 * 60 * 24, '/');
+        setcookie('posisi', $usernya->posisi, time() + 60 * 60 * 24, '/');
+
     }
 }

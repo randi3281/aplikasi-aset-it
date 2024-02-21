@@ -17,22 +17,12 @@
                     <li class="nav-item text-center">
                         <img src="{{ asset('images/logo.png') }}" alt="" class="w-75 mt-5 mb-5">
                     </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-white">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-white">Barang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-white">Pegawai</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class
-                        ="nav-link text-white">Peminjaman</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-white">Logout</a>
-                    </li>
+                    @if ($posisi == 'admin')
+                        @include('dashboard.admin')
+
+                    @elseif ($posisi == 'pengguna')
+                        @include('dashboard.pengguna')
+                    @endif
                 </ul>
             </div>
             <div class="col-md-2">

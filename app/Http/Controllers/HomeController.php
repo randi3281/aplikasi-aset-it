@@ -50,7 +50,7 @@ class HomeController extends Controller
 
         jurnalhelper::buatkukis($usernya);
 
-           return redirect()->route('dashboard');
+        return redirect()->route('dashboard');
     }
 
 
@@ -58,6 +58,7 @@ class HomeController extends Controller
     {
         return redirect()->route('index');
     }
+
     public function dashboard()
     {
         if (!isset($_COOKIE['kukis'])) {
@@ -66,7 +67,7 @@ class HomeController extends Controller
         if (isset($_COOKIE['kukis'])) {
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
-                return view('dashboard');
+                return view('dashboard', ['posisi' => $_COOKIE['posisi']]);
             }
         }
         return redirect()->route('index');
