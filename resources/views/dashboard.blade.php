@@ -19,7 +19,6 @@
                     </li>
                     @if ($posisi == 'admin')
                         @include('dashboard.admin')
-
                     @elseif ($posisi == 'pengguna')
                         @include('dashboard.pengguna')
                     @endif
@@ -29,7 +28,11 @@
 
             </div>
             <div class="col-md-10">
-                <h1>Selamat Datang di Sistem Informasi Inventaris Aset IT</h1>
+                @if ($posisi == 'admin')
+                    @include('dashboard.admin')
+                @elseif ($posisi == 'pengguna')
+                    @include('dashboard.pengguna')
+                @endif
             </div>
         </div>
     </div>

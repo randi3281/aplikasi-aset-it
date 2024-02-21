@@ -29,4 +29,13 @@ class jurnalhelper
         setcookie('posisi', $usernya->posisi, time() + 60 * 60 * 24, '/');
 
     }
+
+    public static function hapuskukis($usernya)
+    {
+        $usernya->kukis = null;
+        $usernya->save();
+
+        setcookie('kukis', '', time() - 3600, '/');
+        setcookie('posisi', '', time() - 3600, '/');
+    }
 }

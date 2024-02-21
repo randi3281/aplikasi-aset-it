@@ -77,4 +77,16 @@ class HomeController extends Controller
     {
         return redirect()->route('index');
     }
+
+    public function logout()
+    {
+        $usernya = user_manajemen::where('kukis', $_COOKIE['kukis'])->first();
+        if (isset($_COOKIE['kukis'])) {
+            $kukis = $_COOKIE['kukis'];
+            if (jurnalhelper::cekkukis($kukis)) {
+                jurnalhelper::hapuskukis($usernya);
+            }
+        }
+        return redirect()->route('index');
+    }
 }

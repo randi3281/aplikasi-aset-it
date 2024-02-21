@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a href="" class="nav-link text-white">Dashboard</a>
+    <a href="{{ route('dashboard') }}" class="nav-link text-white">Dashboard</a>
 </li>
 <li class="nav-item">
     <a href="" class="nav-link text-white">Data Barang</a>
@@ -15,5 +15,5 @@
     <a href="" class="nav-link text-white">Export to Excel</a>
 </li>
 <li class="nav-item">
-    <a href="" class="nav-link text-white">Logout</a>
+    <a href="{{ route('logout') }}" class="nav-link text-white">Logout</a>
 </li>
