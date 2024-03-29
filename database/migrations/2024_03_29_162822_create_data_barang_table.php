@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('serial_number')->nullable();
             $table->string('sophos')->nullable();
             $table->string('landesk')->nullable();
+            $table->string('capex_or_selisih')->nullable();
             $table->string('bulan')->nullable();
             $table->string('tahun')->nullable();
             $table->timestamps();
