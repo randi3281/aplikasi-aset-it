@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mutasi', function (Blueprint $table) {
+        Schema::create('penghapusan', function (Blueprint $table) {
             $table->id();
             $table->integer('no')->nullable();
             $table->integer('asset')->nullable();
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mutasi');
+        Schema::dropIfExists('penghapusan');
     }
 };
