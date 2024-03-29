@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a href="{{ route('dashboard') }}" class="nav-link text-white">Dashboard</a>
+    <a href="{{ route('dashboard') }}" class="nav-link text-white"><b><i>Dashboard</i></b></a>
 </li>
 <li class="nav-item">
     <a href="" class="nav-link text-white">Manajemen User</a>
@@ -20,4 +20,3 @@
 <li class="nav-item">
     <a href="{{ route('logout') }}" class="nav-link text-white">Logout</a>
 </li>
-W
