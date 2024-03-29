@@ -11,7 +11,6 @@ class mutasi extends Model
     protected $table = 'mutasi';
 
     protected $fillable = [
-        'no',
         'asset',
         'kode_fa',
         'nama_barang',
@@ -24,10 +23,12 @@ class mutasi extends Model
         'komputer_nama',
         'ip_address',
         'kondisi',
+        'keterangan',
         'serial_number',
         'sophos',
         'landesk',
         'mutasi_asal',
-        'keterangan',
+        'mutasi_tujuan',
+        'keterangan_mutasi',
     ];
 }

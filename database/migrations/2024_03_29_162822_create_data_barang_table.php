@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mutasi', function (Blueprint $table) {
+        Schema::create('data_barang', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal_perolehan')->nullable();
             $table->string('asset')->nullable();
-            $table->string('kode_fa')->nullable();
+            $table->string('kode_fa_fams')->nullable();
             $table->string('nama_barang')->nullable();
+            $table->string('outlet_pencatatan')->nullable();
             $table->string('outlet_actual')->nullable();
             $table->string('type_barang')->nullable();
             $table->string('location')->nullable();
             $table->string('jabatan')->nullable();
-            $table->string('user_domain')->nullable();
+            $table->string('nama_user')->nullable();
             $table->string('nik')->nullable();
             $table->string('komputer_nama')->nullable();
             $table->string('ip_address')->nullable();
@@ -29,9 +31,6 @@ return new class extends Migration
             $table->string('serial_number')->nullable();
             $table->string('sophos')->nullable();
             $table->string('landesk')->nullable();
-            $table->string('mutasi_asal')->nullable();
-            $table->string('mutasi_tujuan')->nullable();
-            $table->string('keterangan_mutasi')->nullable();
             $table->timestamps();
         });
     }
@@ -41,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mutasi');
+        Schema::dropIfExists('data_barang');
     }
 };

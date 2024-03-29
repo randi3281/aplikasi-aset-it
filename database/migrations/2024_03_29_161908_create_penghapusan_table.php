@@ -13,24 +13,27 @@ return new class extends Migration
     {
         Schema::create('penghapusan', function (Blueprint $table) {
             $table->id();
-            $table->integer('no')->nullable();
-            $table->integer('asset')->nullable();
-            $table->string('kode_fa')->nullable();
+            $table->date('tanggal_perolehan')->nullable();
+            $table->string('asset')->nullable();
+            $table->string('kode_fa_fams')->nullable();
             $table->string('nama_barang')->nullable();
-            $table->string('outlet_actual')->nullable();
+            $table->string('acquis_val')->nullable();
+            $table->string('accum_dep')->nullable();
+            $table->string('book_val')->nullable();
+            $table->string('outlet_pencatatan');
+            $table->string('outlet_actual');
             $table->string('type_barang')->nullable();
             $table->string('location')->nullable();
             $table->string('jabatan')->nullable();
-            $table->string('user_domain')->nullable();
-            $table->integer('nik')->nullable();
+            $table->string('nama_user')->nullable();
+            $table->string('nik')->nullable();
             $table->string('komputer_nama')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('kondisi')->nullable();
+            $table->text('keterangan')->nullable();
             $table->string('serial_number')->nullable();
             $table->string('sophos')->nullable();
             $table->string('landesk')->nullable();
-            $table->string('mutasi_asal')->nullable();
-            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

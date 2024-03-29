@@ -11,23 +11,26 @@ class penghapusan extends Model
     protected $table = 'mutasi';
 
     protected $fillable = [
-        'no',
+        'tanggal_perolehan',
         'asset',
-        'kode_fa',
+        'kode_fa_fams',
         'nama_barang',
+        'acquis_val',
+        'accum_dep',
+        'book_val',
+        'outlet_pencatatan',
         'outlet_actual',
         'type_barang',
         'location',
         'jabatan',
-        'user_domain',
+        'nama_user',
         'nik',
         'komputer_nama',
         'ip_address',
         'kondisi',
+        'keterangan',
         'serial_number',
         'sophos',
         'landesk',
-        'mutasi_asal',
-        'keterangan',
     ];
 }
