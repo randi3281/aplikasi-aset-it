@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('mutasi_asal')->nullable();
             $table->string('mutasi_tujuan')->nullable();
             $table->string('keterangan_mutasi')->nullable();
+            $table->string('bulan')->nullable();
+            $table->string('tahun')->nullable();
             $table->timestamps();
         });
     }

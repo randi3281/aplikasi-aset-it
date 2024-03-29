@@ -29,9 +29,9 @@
             </div>
             <div class="col-md-10">
                 @if ($posisi == 'admin')
-                    @include('dashboard.inti.admin')
+                    @include('dashboard.admin')
                 @elseif ($posisi == 'pengguna')
-                    @include('dashboard.inti.pengguna')
+                    @include('dashboard.pengguna')
                 @endif
             </div>
         </div>
