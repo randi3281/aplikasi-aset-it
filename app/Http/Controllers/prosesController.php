@@ -92,8 +92,10 @@ class prosesController extends Controller
 
         }
         // buatlah katabaru menjadi sebuah kalimat dengan tambahan spasi
+        $katapertama = $words[0];
         $katabaru = implode(" ", $katabaru);
         session(['area' => $katabaru]);
+        session(['katapertama' => $katapertama]);
 
 
         // Tampilkan view edit dengan data pengguna yang akan diedit
@@ -102,6 +104,8 @@ class prosesController extends Controller
 
     public function update(Request $request, $id)
     {
+        session_start();
+            $_SESSION['edit'] = 'tidak';
         if(isset($request->tomboledit)){
             // Validasi input dari formulir
             $request->validate([
@@ -120,14 +124,13 @@ class prosesController extends Controller
             $user->nama = $request->nama;
             $user->nik = $request->nik;
             if($request->password != null){
-                $user->password = $request->password;
+                $user->password = bcrypt($request->password);
             }
             $user->posisi = $request->posisi;
             $user->area = $request->area." ".$request->daerah;
             $user->save();
 
             // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
-            $_SESSION['edit'] = 'tidak';
             return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
         }
 
