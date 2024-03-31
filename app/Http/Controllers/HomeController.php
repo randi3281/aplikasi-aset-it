@@ -33,11 +33,15 @@ class HomeController extends Controller
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
                 $usernya = user_manajemen::where('kukis', $_COOKIE['kukis'])->first();
-
-                if($_COOKIE['posisi'] == 'admin'){
-                    return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu]);
+                if($menu == 'dashboard' || $menu == 'user_manajemen' || $menu == 'mutasi' || $menu == 'pengguna' || $menu == 'penghapusan'){
+                    if($_COOKIE['posisi'] == 'pengguna' && $menu == 'user_manajemen'){
+                        return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                    } else {
+                        $user_manajemen = user_manajemen::paginate(10);
+                        return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'user_manajemen' => $user_manajemen]);
+                    }
                 }else{
-                    return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu]);
+                    return redirect()->route('dashboard', ['menu' => 'dashboard']);
                 }
             }
         }
@@ -56,17 +60,4 @@ class HomeController extends Controller
         return redirect()->route('index');
     }
 
-    public function usermanajemen()
-    {
-        if (!isset($_COOKIE['kukis'])) {
-            return redirect()->route('login');
-        }
-        if (isset($_COOKIE['kukis'])) {
-            $kukis = $_COOKIE['kukis'];
-            if (jurnalhelper::cekkukis($kukis)) {
-                return view('dashboard.admin.user_manajemen', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']]);
-            }
-        }
-        return redirect()->route('index');
-    }
 }

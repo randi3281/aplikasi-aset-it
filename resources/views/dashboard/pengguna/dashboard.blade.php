@@ -16,7 +16,8 @@
             <hr>
             Posisi: {{ $posisi }}
             <hr>
-            Adira Area: {{ $area }}
+            Area: {{ $area }}
             <hr>
         </div>
     </div>
+</div>

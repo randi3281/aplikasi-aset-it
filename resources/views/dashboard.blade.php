@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Adira IT Assets Management</title>
     <link rel="stylesheet" href="{{ asset('bt/css/bootstrap.css') }}">
+
 </head>
 
 <body class="bg-warning">
@@ -27,12 +28,14 @@
                 @if ($posisi == 'admin')
                     @if ($menu == 'dashboard')
                         @include('dashboard.admin.dashboard')
-                    @elseif ($menu == 'usermanajemen')
+                    @elseif ($menu == 'user_manajemen')
                         @include('dashboard.admin.user_manajemen')
                     @endif
                 @elseif ($posisi == 'pengguna')
                     @if ($menu == 'dashboard')
                         @include('dashboard.pengguna.dashboard')
+                    @elseif ($menu == 'usermanajemen')
+                        {{-- @include('dashboard.pengguna.dashboard') --}}
                     @endif
                 @endif
             </div>
