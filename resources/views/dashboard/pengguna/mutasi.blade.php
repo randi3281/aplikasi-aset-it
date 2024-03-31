@@ -17,7 +17,11 @@
                     <li class="nav-item text-center">
                         <img src="{{ asset('images/logo.png') }}" alt="" class="w-75 mt-5 mb-5">
                     </li>
-                    @include('dashboard.navbar')
+                    @if ($posisi == 'admin')
+                        @include('dashboard.admin')
+                    @elseif ($posisi == 'pengguna')
+                        @include('dashboard.pengguna')
+                    @endif
                 </ul>
             </div>
             <div class="col-md-2">
@@ -25,13 +29,9 @@
             </div>
             <div class="col-md-10">
                 @if ($posisi == 'admin')
-                    @if ($menu == 'dashboard')
-                        @include('dashboard.admin.dashboard')
-                    @elseif ($menu == 'usermanajemen')
-                        @include('dashboard.admin.user_manajemen')
-                    @endif
+                    @include('dashboard.admin')
                 @elseif ($posisi == 'pengguna')
-                    @include('dashboard.pengguna.dashboard')
+                    @include('dashboard.pengguna')
                 @endif
             </div>
         </div>

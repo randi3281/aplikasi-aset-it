@@ -16,7 +16,7 @@ class HomeController extends Controller
         if (isset($_COOKIE['kukis'])) {
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard', ['menu' => 'dashboard']);
             }
         }
         return view('login');
@@ -24,7 +24,7 @@ class HomeController extends Controller
 
 
 
-    public function dashboard()
+    public function dashboard($menu)
     {
         if (!isset($_COOKIE['kukis'])) {
             return redirect()->route('login');
@@ -33,7 +33,8 @@ class HomeController extends Controller
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
                 $usernya = user_manajemen::where('kukis', $_COOKIE['kukis'])->first();
-                return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']]);
+
+                return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu]);
             }
         }
         return redirect()->route('index');
@@ -59,7 +60,7 @@ class HomeController extends Controller
         if (isset($_COOKIE['kukis'])) {
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
-                return view('usermanajemen', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']]);
+                return view('dashboard.admin.user_manajemen', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']]);
             }
         }
         return redirect()->route('index');

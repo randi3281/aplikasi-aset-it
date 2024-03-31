@@ -1,10 +1,24 @@
 <li class="nav-item">
-    <a href="{{ route('dashboard') }}" class="nav-link text-white"><b><i>Dashboard</i></b></a>
+    <a href="{{ route('dashboard', ['menu' => 'dashboard']) }}" class="nav-link text-white">
+        @if ($menu == 'dashboard')
+            <b><i>Dashboard</i></b>
+        @else
+            Dashboard
+        @endif
+    </a>
 </li>
+@if ($posisi == 'admin')
+    <li class="nav-item">
+        <a href="{{ route('dashboard', ['menu' => 'user_manajemen']) }}" class="nav-link text-white">
+            @if ($menu == 'user_manajemen')
+                <b><i>Manajemen User</i></b>
+            @else
+                Manajemen User
+            @endif
+        </a>
+    </li>
+@endif
 {{-- <li class="nav-item">
-    <a href="{{ route('usermanajemen') }}" class="nav-link text-white">Manajemen User</a>
-</li>
-<li class="nav-item">
     <a href="{{ route('databarang') }}" class="nav-link text-white">Data Barang</a>
 </li>
 <li class="nav-item">

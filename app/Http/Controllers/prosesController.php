@@ -39,6 +39,6 @@ class prosesController extends Controller
 
         jurnalhelper::buatkukis($usernya);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard', ['menu' => 'dashboard']);
     }
 }

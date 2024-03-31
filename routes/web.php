@@ -21,12 +21,11 @@ use App\Http\Controllers\salahController;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+// tampilan sub menu
+Route::get('/dashboard/{menu}', [HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
 // intinya yang salah-salah disini
 Route::get('/login', [salahController::class, 'salahlogin'])->name('login');
 Route::get('/{salahweb}', [salahController::class, 'salahweb'])->name('salahweb');
 
-// tampilan sub menu
-Route::get('/usermanajemen', [HomeController::class, 'usermanajemen'])->name('usermanajemen');
