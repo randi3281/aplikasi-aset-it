@@ -20,6 +20,7 @@ use App\Http\Controllers\salahController;
 //     return view('welcome');
 // });
 
+Route::get('hy', [HomeController::class, 'hy'])->name('hy');
 Route::get('/', [HomeController::class, 'index'])->name('index');
 // tampilan sub menu
 Route::get('/dashboard/{menu}', [HomeController::class, 'dashboard'])->name('dashboard');

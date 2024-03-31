@@ -22,10 +22,14 @@ class HomeController extends Controller
         return view('login');
     }
 
+    public function hy(){
+        return view('hy');
+    }
 
 
     public function dashboard($menu)
     {
+        session_start();
         if (!isset($_COOKIE['kukis'])) {
             return redirect()->route('login');
         }

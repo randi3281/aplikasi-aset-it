@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adira IT Assets Management</title>
     <link rel="stylesheet" href="{{ asset('bt/css/bootstrap.css') }}">
-
 </head>
 
 <body class="bg-warning">
@@ -27,6 +26,9 @@
             <div class="col-md-10">
                 @if ($posisi == 'admin')
                     @if ($menu == 'dashboard')
+                        @php
+                            $_SESSION['edit'] = 'tidak';
+                        @endphp
                         @include('dashboard.admin.dashboard')
                     @elseif ($menu == 'user_manajemen')
                         @include('dashboard.admin.user_manajemen')
@@ -34,8 +36,6 @@
                 @elseif ($posisi == 'pengguna')
                     @if ($menu == 'dashboard')
                         @include('dashboard.pengguna.dashboard')
-                    @elseif ($menu == 'usermanajemen')
-                        {{-- @include('dashboard.pengguna.dashboard') --}}
                     @endif
                 @endif
             </div>
