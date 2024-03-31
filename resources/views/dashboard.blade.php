@@ -31,7 +31,9 @@
                         @include('dashboard.admin.user_manajemen')
                     @endif
                 @elseif ($posisi == 'pengguna')
-                    @include('dashboard.pengguna.dashboard')
+                    @if ($menu == 'dashboard')
+                        @include('dashboard.pengguna.dashboard')
+                    @endif
                 @endif
             </div>
         </div>
