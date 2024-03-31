@@ -25,6 +25,7 @@
                             <th>NIK</th>
                             <th>Posisi</th>
                             <th>Area</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>

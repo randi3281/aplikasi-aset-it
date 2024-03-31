@@ -18,10 +18,16 @@
         </a>
     </li>
 @endif
-{{-- <li class="nav-item">
-    <a href="{{ route('databarang') }}" class="nav-link text-white">Data Barang</a>
-</li>
 <li class="nav-item">
+    <a href="{{ route('dashboard', ['menu' => 'data_barang']) }}" class="nav-link text-white">
+        @if ($menu == 'data_barang')
+            <b><i>Data Barang</i></b>
+       @else
+            Data Barang
+        @endif
+    </a>
+</li>
+{{-- <li class="nav-item">
     <a href="{{ route('mutasi') }}" class="nav-link text-white">Mutasi</a>
 </li>
 <li class="nav-item">

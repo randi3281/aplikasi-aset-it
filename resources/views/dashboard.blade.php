@@ -32,10 +32,14 @@
                         @include('dashboard.admin.dashboard')
                     @elseif ($menu == 'user_manajemen')
                         @include('dashboard.admin.user_manajemen')
+                    @elseif ($menu == 'data_barang')
+                        @include('dashboard.admin.data_barang')
                     @endif
                 @elseif ($posisi == 'pengguna')
                     @if ($menu == 'dashboard')
                         @include('dashboard.pengguna.dashboard')
+                    @elseif ($menu == 'data_barang')
+                        @include('dashboard.pengguna.data_barang')
                     @endif
                 @endif
             </div>

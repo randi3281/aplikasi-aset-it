@@ -37,7 +37,7 @@ class HomeController extends Controller
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
                 $usernya = user_manajemen::where('kukis', $_COOKIE['kukis'])->first();
-                if($menu == 'dashboard' || $menu == 'user_manajemen' || $menu == 'mutasi' || $menu == 'pengguna' || $menu == 'penghapusan'){
+                if($menu == 'dashboard' ||  $menu == 'data_barang' ||$menu == 'user_manajemen' || $menu == 'mutasi' || $menu == 'pengguna' || $menu == 'penghapusan'){
                     if($_COOKIE['posisi'] == 'pengguna' && $menu == 'user_manajemen'){
                         return redirect()->route('dashboard', ['menu' => 'dashboard']);
                     } else {
