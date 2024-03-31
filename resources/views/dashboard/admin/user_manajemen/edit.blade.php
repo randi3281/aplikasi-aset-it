@@ -37,7 +37,8 @@
                     placeholder="Nama daerah" value="{{ session('area') }}">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3 w-100" name="tambah">Tambah</button>
+                <button type="submit" class="btn btn-danger mt-3 w-25" name="tombolbatal">Batal</button>
+                <button type="submit" class="btn btn-primary mt-3 w-50" name="tomboledit">Edit</button>
             </div>
         </form>
     </div>

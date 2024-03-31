@@ -102,28 +102,39 @@ class prosesController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validasi input dari formulir
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-            'nik' => 'required|integer|max:255',
-            'posisi' => 'required|string|max:255',
-            'area' => 'required|string|max:255',
-        ]);
+        if(isset($request->tomboledit)){
+            // Validasi input dari formulir
+            $request->validate([
+                // 'nama' => 'required|string|max:255',
+                // 'password' => 'required|string|max:255',
+                // 'nik' => 'required|numeric',
+                // 'posisi' => 'required|string|max:255',
+                // 'area' => 'required|string|max:255',
+                // 'daerah' => 'required|string|max:255',
+            ]);
 
-        // Temukan entitas pengguna berdasarkan ID
-        $user = user_manajemen::findOrFail($id);
+            // Temukan entitas pengguna berdasarkan ID
+            $user = user_manajemen::findOrFail($id);
 
-        // Update data pengguna dengan data baru dari formulir
-        $user->nama = $request->nama;
-        $user->nik = $request->nik;
-        $user->password = $request->password;
-        $user->posisi = $request->posisi;
-        $user->area = $request->area;
-        $user->save();
+            // Update data pengguna dengan data baru dari formulir
+            $user->nama = $request->nama;
+            $user->nik = $request->nik;
+            if($request->password != null){
+                $user->password = $request->password;
+            }
+            $user->posisi = $request->posisi;
+            $user->area = $request->area." ".$request->daerah;
+            $user->save();
 
-        // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
-        return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
+            // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
+            $_SESSION['edit'] = 'tidak';
+            return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
+        }
+
+        if(isset($request->tombolbatal)){
+            $_SESSION['edit'] = 'tidak';
+            return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
+        }
     }
 
     public function destroy($id)
