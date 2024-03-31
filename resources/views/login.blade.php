@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="card-body">
             @endif
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('proses.login') }}" method="post">
                 @csrf
                 <div class="row justify-content-center">
                     <div class="col-md-11">

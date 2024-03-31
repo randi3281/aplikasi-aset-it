@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\prosesController;
+use App\Http\Controllers\salahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +21,12 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::post('/login', [HomeController::class, 'login'])->name('login');
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
 // intinya yang salah-salah disini
-Route::get('/login', [HomeController::class, 'salahlogin'])->name('salahlogin');
-Route::get('/{salahweb}', [HomeController::class, 'salahweb'])->name('salahweb');
+Route::get('/login', [salahController::class, 'salahlogin'])->name('salahlogin');
+Route::get('/{salahweb}', [salahController::class, 'salahweb'])->name('salahweb');
+
+// tampilan sub menu
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+Route::get('/usermanajemen', [HomeController::class, 'usermanajemen'])->name('usermanajemen');
