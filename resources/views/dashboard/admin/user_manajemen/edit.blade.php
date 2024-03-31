@@ -12,7 +12,8 @@
             </div>
             <div class="form-group mt-2">
                 <label for="nik">NIK</label>
-                <input type="text" name="nik" id="nik" class="form-control">
+                <input type="text" name="nik" id="nik" class="form-control"
+                    value="{{ session('useredit')->nik }}">
             </div>
             <div class="form-group mt-2">
                 <label for="password">Password</label>
@@ -33,7 +34,7 @@
                     <option value="Warehouse">Warehouse</option>
                 </select>
                 <input type="text" name="daerah" id="daerah" class="form-control-sm w-50"
-                    placeholder="Nama daerah">
+                    placeholder="Nama daerah" value="{{ session('area') }}">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary mt-3 w-100" name="tambah">Tambah</button>

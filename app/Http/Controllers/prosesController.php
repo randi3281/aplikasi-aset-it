@@ -78,6 +78,24 @@ class prosesController extends Controller
         $_SESSION['edit'] = 'iya';
         session(['useredit' => $useredit]);
 
+        $words = explode(' ', $useredit->area); // Membagi nilai berdasarkan spasi
+
+        // Mengabaikan elemen pertama (kata1)
+        $wordsExceptFirst = array_slice($words, 1);
+
+        // Menampilkan kata-kata selain kata pertama
+        // buatlah array kata
+        $katabaru = array();
+        foreach ($wordsExceptFirst as $word) {
+            // inputkan ke array katabaru
+            array_push($katabaru, $word);
+
+        }
+        // buatlah katabaru menjadi sebuah kalimat dengan tambahan spasi
+        $katabaru = implode(" ", $katabaru);
+        session(['area' => $katabaru]);
+
+
         // Tampilkan view edit dengan data pengguna yang akan diedit
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
