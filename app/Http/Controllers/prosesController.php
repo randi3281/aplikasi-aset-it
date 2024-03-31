@@ -36,6 +36,7 @@ class prosesController extends Controller
             return back()->withErrors(['password' => 'NIK atau kata sandi salah.'])->withInput();
         }
 
+
         jurnalhelper::buatkukis($usernya);
 
         return redirect()->route('dashboard');

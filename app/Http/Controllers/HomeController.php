@@ -32,7 +32,7 @@ class HomeController extends Controller
         if (isset($_COOKIE['kukis'])) {
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
-
+                $usernya = user_manajemen::where('kukis', $_COOKIE['kukis'])->first();
                 return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']]);
             }
         }

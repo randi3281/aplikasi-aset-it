@@ -5,4 +5,4 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\prosesController;
 
 
-Route::post('/login', [prosesController::class, 'login'])->name('login');
+Route::post('login', [prosesController::class, 'login'])->name('login');

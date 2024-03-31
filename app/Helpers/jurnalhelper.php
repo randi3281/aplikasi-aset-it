@@ -7,6 +7,7 @@ class jurnalhelper
 {
     public static function cekkukis($kukis)
     {
+        return view('hy');
         $usernya = user_manajemen::where('kukis', $kukis)->first();
         if ($usernya) {
             return true;
@@ -19,11 +20,11 @@ class jurnalhelper
     public static function buatkukis($usernya)
     {
         do {
-            $kukis = md5(uniqid(rand(), true));
-        } while (user_manajemen::where('kukis', $kukis)->exists());
+                $kukis = md5(uniqid(rand(), true));
+            } while (user_manajemen::where('kukis', $kukis)->exists());
 
-        $usernya->kukis = $kukis;
-        $usernya->save();
+            $usernya->kukis = $kukis;
+            $usernya->save();
 
         $current_time = time();
         $current_time_gmt7 = time() + (7 * 3600);
@@ -37,6 +38,7 @@ class jurnalhelper
         setcookie('nik', $usernya->nik, time() + 60 * 60 * 24, '/');
         setcookie('area', $usernya->area, time() + 60 * 60 * 24, '/');
         setcookie('posisi', $usernya->posisi, time() + 60 * 60 * 24, '/');
+
 
     }
 
