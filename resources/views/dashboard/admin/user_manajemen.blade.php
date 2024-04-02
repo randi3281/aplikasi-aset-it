@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user_manajemen as $user)
+                        @foreach ($datanya as $user)
                             <tr>
                                 <td style="height: 8px; font-size: 11pt">{{ $loop->iteration }}</td>
                                 <td style="height: 8px; font-size: 11pt">{{ $user->nama }}</td>
@@ -50,7 +50,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $user_manajemen->links('pagination::bootstrap-4') }}
+                {{ $datanya->links('pagination::bootstrap-4') }}
             </div>
         </div>
 

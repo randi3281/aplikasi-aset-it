@@ -34,12 +34,24 @@
                         @include('dashboard.admin.user_manajemen')
                     @elseif ($menu == 'data_barang')
                         @include('dashboard.admin.data_barang')
+                    @elseif ($menu == 'mutasi')
+                        @include('dashboard.admin.mutasi')
+                    @elseif ($menu == 'penghapusan')
+                        @include('dashboard.admin.penghapusan')
+                    @elseif ($menu == 'export_to_excel')
+                        @include('dashboard.admin.export_to_excel')
                     @endif
                 @elseif ($posisi == 'pengguna')
                     @if ($menu == 'dashboard')
                         @include('dashboard.pengguna.dashboard')
                     @elseif ($menu == 'data_barang')
                         @include('dashboard.pengguna.data_barang')
+                    @elseif ($menu == 'mutasi')
+                        @include('dashboard.pengguna.mutasi')
+                    @elseif ($menu == 'penghapusan')
+                        @include('dashboard.pengguna.penghapusan')
+                    @elseif ($menu == 'export_to_excel')
+                        @include('dashboard.pengguna.export_to_excel')
                     @endif
                 @endif
             </div>

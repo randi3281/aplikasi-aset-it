@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class data_barang extends Model
+class data_barang_now extends Model
 {
     use HasFactory;
 
-    protected $table = 'data_barang';
+    protected $table = 'data_barang_now';
     protected $fillable = [
         'tanggal_perolehan',
         'asset',
@@ -29,8 +29,6 @@ class data_barang extends Model
         'serial_number',
         'sophos',
         'landesk',
-        'capex_or_selisih',
-        'bulan',
-        'tahun'
+        'capex_or_selisih'
     ];
 }
