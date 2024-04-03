@@ -6,6 +6,7 @@ use App\Http\Controllers\prosesController;
 
 
 Route::post('login', [prosesController::class, 'login'])->name('login');
+Route::post('login/lempar', [prosesController::class, 'login_lempar'])->name('login.lempar');
 
 Route::post('/admin/user/store', [prosesController::class, 'store'])->name('admin.user.store');
 Route::get('/admin/user/{id}/edit', [prosesController::class, 'edit'])->name('admin.user.edit');

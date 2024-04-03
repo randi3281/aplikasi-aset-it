@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('user_manajemen', function (Blueprint $table) {
-            $table->integer('nik')->change();
+        Schema::table('mutasi', function (Blueprint $table) {
+            $table->string('area_user')->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user_manajemen', function (Blueprint $table) {
-            $table->string('nik')->change();
+        Schema::table('mutasi', function (Blueprint $table) {
+            $table->dropColumn('area_user');
         });
     }
 };

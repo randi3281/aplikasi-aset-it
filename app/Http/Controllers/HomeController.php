@@ -49,7 +49,7 @@ class HomeController extends Controller
                             $_SESSION['data_barang_area']= 'all';
                             $_SESSION['data_barang_bulan']= 'all';
                             $_SESSION['data_barang_tahun']= 'all';
-                        } elseif ($menu == 'data_barang' || $_COOKIE['posisi'] == 'admin'){
+                        } elseif ($menu == 'data_barang' && $_COOKIE['posisi'] == 'admin'){
                             if($_SESSION['data_barang_time'] == 'now'){
                                 $datanya = data_barang_now::paginate(10);
                             } else {

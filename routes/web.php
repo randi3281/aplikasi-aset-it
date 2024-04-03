@@ -22,9 +22,11 @@ use App\Http\Controllers\salahController;
 
 Route::get('hy', [HomeController::class, 'hy'])->name('hy');
 Route::get('/', [HomeController::class, 'index'])->name('index');
+
 // tampilan sub menu
 Route::get('/dashboard/{menu}', [HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+
 
 // intinya yang salah-salah disini
 Route::get('/login', [salahController::class, 'salahlogin'])->name('login');

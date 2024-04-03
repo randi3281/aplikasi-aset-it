@@ -1,5 +1,6 @@
 <div class="row mt-5 justify-content-end">
     <div class="col-md-12">
+        <h1 class="mb-4"><b>Data Barang</b></h1>
         <form class="mb-3" action="{{ Route('proses.data_barang_pilihan') }}" method="POST">
             @csrf
             <div class="form-group">

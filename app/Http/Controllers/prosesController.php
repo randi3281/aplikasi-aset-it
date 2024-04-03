@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\user_manajemen;
+use App\Models\area_user_aplikasi;
 use App\Helpers\jurnalhelper;
 
 class prosesController extends Controller
 {
     public function login(Request $request)
     {
+        session_start();
         $input = $request->only('nik', 'password');
         $validator = Validator::make($input, [
             'nik' => 'required|numeric',
@@ -36,7 +38,26 @@ class prosesController extends Controller
             return back()->withErrors(['password' => 'NIK atau kata sandi salah.'])->withInput();
         }
 
+        $data_area = area_user_aplikasi::where('nik', $request->nik)->get();
+        $_SESSION['nik_diambil'] = $request->nik;
+        return view('area', ['data_area' => $data_area]);
+    }
 
+    public function login_lempar(Request $request)
+    {
+        session_start();
+        $input = $request->only('area');
+        $validator = Validator::make($input, [
+            'area' => 'required|string'
+        ], [
+            'area.required' => 'Area diperlukan.',
+            'area.numeric' => 'Area harus berupa tulisan.'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $usernya = user_manajemen::where('nik', $_SESSION['nik_diambil'])->where('area', $request->area)->first();
         jurnalhelper::buatkukis($usernya);
 
         return redirect()->route('dashboard', ['menu' => 'dashboard']);
@@ -64,6 +85,11 @@ class prosesController extends Controller
         $user->posisi = $request->posisi;
         $user->area = $request->area." ".$request->daerah;
         $user->save();
+
+        $area_user_aplikasi = new area_user_aplikasi;
+        $area_user_aplikasi->nik = $request->nik;
+        $area_user_aplikasi->area_user = $request->area." ".$request->daerah;
+        $area_user_aplikasi->save();
 
         // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
