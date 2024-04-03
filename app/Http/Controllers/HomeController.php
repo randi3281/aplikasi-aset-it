@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\user_manajemen;
 use App\Helpers\jurnalhelper;
+use App\Models\data_barang_now;
+use App\Models\data_barang;
 
 class HomeController extends Controller
 {
@@ -41,7 +43,16 @@ class HomeController extends Controller
                     if($_COOKIE['posisi'] == 'pengguna' && $menu == 'user_manajemen'){
                         return redirect()->route('dashboard', ['menu' => 'dashboard']);
                     } else {
-                        $datanya = user_manajemen::paginate(10);
+                        if($menu == 'dashboard' || $menu == 'user_manajemen'){
+                            $datanya = user_manajemen::paginate(10);
+                            $_SESSION['data_barang_time'] = 'now';
+                        } elseif ($menu == 'data_barang' || $_COOKIE['posisi'] == 'admin'){
+                            if($_SESSION['data_barang_time'] == 'now'){
+                                $datanya = data_barang_now::paginate(10);
+                            } else {
+                                $datanya = data_barang::paginate(10);
+                            }
+                        }
                         return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya]);
                     }
                 }else{

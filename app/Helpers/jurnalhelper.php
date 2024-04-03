@@ -50,4 +50,8 @@ class jurnalhelper
         setcookie('kukis', '', time() - 3600, '/');
         setcookie('posisi', '', time() - 3600, '/');
     }
+
+    public static function ceksessiondatabarang(){
+
+    }
 }

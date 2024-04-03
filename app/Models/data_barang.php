@@ -31,6 +31,7 @@ class data_barang extends Model
         'landesk',
         'capex_or_selisih',
         'bulan',
-        'tahun'
+        'tahun',
+        'area_user'
     ];
 }

@@ -29,6 +29,7 @@ class data_barang_now extends Model
         'serial_number',
         'sophos',
         'landesk',
-        'capex_or_selisih'
+        'capex_or_selisih',
+        'area_user'
     ];
 }
