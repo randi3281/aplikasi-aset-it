@@ -53,7 +53,8 @@ class HomeController extends Controller
                                 $datanya = data_barang::paginate(10);
                             }
                         }
-                        return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya]);
+                        $data_user = user_manajemen::all();
+                        return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya, 'data_user' => $data_user]);
                     }
                 }else{
                     return redirect()->route('dashboard', ['menu' => 'dashboard']);

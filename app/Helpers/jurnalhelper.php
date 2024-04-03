@@ -51,7 +51,4 @@ class jurnalhelper
         setcookie('posisi', '', time() - 3600, '/');
     }
 
-    public static function ceksessiondatabarang(){
-
-    }
 }
