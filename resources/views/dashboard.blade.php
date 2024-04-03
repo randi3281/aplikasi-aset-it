@@ -19,7 +19,7 @@
     <body class="bg-warning">
     @elseif ($menu == 'data_barang')
 
-        <body class="bg-warning" style="width: 2100px">
+        <body class="bg-warning" style="width: 2500px">
 @endif
 <div class="container-fluid">
     <div class="row">

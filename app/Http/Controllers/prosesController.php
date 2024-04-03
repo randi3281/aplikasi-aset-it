@@ -151,4 +151,14 @@ class prosesController extends Controller
         // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
+
+    public function databarangpilihan(Request $request)
+    {
+        session_start();
+        $_SESSION['data_barang_time'] = 'old';
+        $_SESSION['data_barang_area']= $request->area;
+        $_SESSION['data_barang_bulan']= $request->bulan;
+        $_SESSION['data_barang_tahun']= $request->tahun;
+        return redirect()->route('dashboard', ['menu' => 'data_barang']);
+    }
 }
