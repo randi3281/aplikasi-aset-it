@@ -117,6 +117,9 @@
                         <td>{{ $data->asset }}</td>
                         <td>{{ $data->kode_fa_fams }}</td>
                         <td>{{ $data->nama_barang }}</td>
+                        <td>{{ $data->acquis_val }}</td>
+                        <td>{{ $data->accum_dep }}</td>
+                        <td>{{ $data->book_val }}</td>
                         <td>{{ $data->outlet_pencatatan }}</td>
                         <td>{{ $data->outlet_actual }}</td>
                         <td>{{ $data->type_barang }}</td>

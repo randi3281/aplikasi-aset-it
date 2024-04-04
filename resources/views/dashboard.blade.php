@@ -17,10 +17,10 @@
         <body class="bg-warning" style="width: 2500px">
         @elseif ($menu == 'mutasi')
 
-            <body class="bg-warning" style="width: 2500px">
-        @elseif ($menu == 'penghapusan')
+            <body class="bg-warning" style="width: 2700px">
+            @elseif ($menu == 'penghapusan')
 
-            <body class="bg-warning" style="width: 2500px">
+                <body class="bg-warning" style="width: 2900px">
 @endif
 <div class="container-fluid">
     <div class="row">
@@ -40,8 +40,8 @@
                 <div class="col-md-12" style="margin-left: 230px">
                 @elseif ($menu == 'mutasi')
                     <div class="col-md-12" style="margin-left: 230px">
-                @elseif ($menu == 'penghapusan')
-                    <div class="col-md-12" style="margin-left: 230px">
+                    @elseif ($menu == 'penghapusan')
+                        <div class="col-md-12" style="margin-left: 230px">
         @endif
 
         @if ($posisi == 'admin')
