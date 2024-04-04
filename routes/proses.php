@@ -13,3 +13,5 @@ Route::get('/admin/user/{id}/edit', [prosesController::class, 'edit'])->name('ad
 Route::post('/admin/user/{id}', [prosesController::class, 'update'])->name('admin.user.update');
 Route::delete('/admin/user/{id}/delete', [prosesController::class, 'destroy'])->name('admin.user.delete');
 Route::post('/databarangpilihan', [prosesController::class, 'databarangpilihan'])->name('data_barang_pilihan');
+Route::post('/mutasipilihan', [prosesController::class, 'mutasipilihan'])->name('mutasi_pilihan');
+Route::post('/penghapusanpilihan', [prosesController::class, 'penghapusanpilihan'])->name('penghapusan_pilihan');

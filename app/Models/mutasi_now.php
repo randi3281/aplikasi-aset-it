@@ -5,25 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class penghapusan extends Model
+class mutasi_now extends Model
 {
     use HasFactory;
-    protected $table = 'penghapusan';
+    protected $table = 'mutasi_now';
 
     protected $fillable = [
-        'tanggal_perolehan',
         'asset',
-        'kode_fa_fams',
+        'kode_fa',
         'nama_barang',
-        'acquis_val',
-        'accum_dep',
-        'book_val',
-        'outlet_pencatatan',
         'outlet_actual',
         'type_barang',
         'location',
         'jabatan',
-        'nama_user',
+        'user_domain',
         'nik',
         'komputer_nama',
         'ip_address',
@@ -32,8 +27,9 @@ class penghapusan extends Model
         'serial_number',
         'sophos',
         'landesk',
-        'bulan',
-        'tahun',
+        'mutasi_asal',
+        'mutasi_tujuan',
+        'keterangan_mutasi',
         'area_user'
     ];
 }

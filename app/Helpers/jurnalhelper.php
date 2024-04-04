@@ -51,4 +51,18 @@ class jurnalhelper
         setcookie('posisi', '', time() - 3600, '/');
     }
 
+    public static function resetsession(){
+        $_SESSION['data_barang_time'] = 'now';
+        $_SESSION['data_barang_area']= 'all';
+        $_SESSION['data_barang_bulan']= 'all';
+        $_SESSION['data_barang_tahun']= 'all';
+        $_SESSION['mutasi_time'] = 'now';
+        $_SESSION['mutasi_area']= 'all';
+        $_SESSION['mutasi_bulan']= 'all';
+        $_SESSION['mutasi_tahun']= 'all';
+        $_SESSION['penghapusan_time'] = 'now';
+        $_SESSION['penghapusan_area']= 'all';
+        $_SESSION['penghapusan_bulan']= 'all';
+        $_SESSION['penghapusan_tahun']= 'all';
+    }
 }

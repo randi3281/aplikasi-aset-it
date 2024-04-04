@@ -10,6 +10,10 @@ use App\Models\user_manajemen;
 use App\Helpers\jurnalhelper;
 use App\Models\data_barang_now;
 use App\Models\data_barang;
+use App\Models\mutasi_now;
+use App\Models\mutasi;
+use App\Models\penghapusan_now;
+use App\Models\penghapusan;
 
 class HomeController extends Controller
 {
@@ -39,7 +43,7 @@ class HomeController extends Controller
             $kukis = $_COOKIE['kukis'];
             if (jurnalhelper::cekkukis($kukis)) {
                 $usernya = user_manajemen::where('kukis', $_COOKIE['kukis'])->first();
-                if($menu == 'dashboard' ||  $menu == 'data_barang' ||$menu == 'user_manajemen' || $menu == 'mutasi' || $menu == 'pengguna' || $menu == 'penghapusan' || $menu == 'export_to_excel'){
+                if($menu == 'dashboard' ||  $menu == 'data_barang' || $menu == 'user_manajemen' || $menu == 'mutasi' || $menu == 'pengguna' || $menu == 'penghapusan' || $menu == 'export_to_excel'){
 
                     if($_COOKIE['posisi'] == 'pengguna'){
 
@@ -68,21 +72,15 @@ class HomeController extends Controller
 
                         if($menu == 'dashboard'){
                             $datanya = user_manajemen::all();
-                            $_SESSION['data_barang_time'] = 'now';
-                            $_SESSION['data_barang_area']= 'all';
-                            $_SESSION['data_barang_bulan']= 'all';
-                            $_SESSION['data_barang_tahun']= 'all';
+                            jurnalhelper::resetsession();
                             return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya]);
                         }
 
                         if($menu == 'user_manajemen'){
                             $datanya = user_manajemen::paginate(10);
-                            $_SESSION['data_barang_time'] = 'now';
-                            $_SESSION['data_barang_area']= 'all';
-                            $_SESSION['data_barang_bulan']= 'all';
-                            $_SESSION['data_barang_tahun']= 'all';
+                            jurnalhelper::resetsession();
                             return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya]);
-
+                            // return route('hy');
                         }
 
                         if ($menu == 'data_barang'){
@@ -120,15 +118,102 @@ class HomeController extends Controller
                                         $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->where('area_user', $_SESSION['data_barang_area'])->where('tahun', $_SESSION['data_barang_tahun'])->paginate(10);
                                     }
                                 }
-                                $data_user = user_manajemen::all();
-                                $data_barang_old = data_barang::all();
-                                return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya], compact('data_barang_old', 'data_user'));
                             }
+                            $data_user = user_manajemen::all();
+                            $data_barang_old = data_barang::all();
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya], compact('data_barang_old', 'data_user'));
                         }
+
+                        if($menu == 'mutasi'){
+                            if($_SESSION['mutasi_time'] == 'now'){
+                                $datanya = mutasi_now::paginate(10);
+                            } else {
+                                if($_SESSION['mutasi_area'] == 'all' && $_SESSION['mutasi_bulan'] == 'all' && $_SESSION['mutasi_tahun'] == 'all'){
+                                    $datanya = mutasi_now::paginate(10);
+                                } else{
+                                    if($_SESSION['mutasi_area'] == 'all'){
+                                        if($_SESSION['mutasi_bulan'] == 'all'){
+                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
+                                        } elseif($_SESSION['mutasi_tahun'] == 'all'){
+                                            $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
+                                        }elseif($_SESSION['mutasi_bulan'] != 'all' && $_SESSION['mutasi_tahun'] != 'all'){
+                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
+                                        }
+                                    }elseif($_SESSION['mutasi_bulan'] == 'all'){
+                                        if($_SESSION['mutasi_area'] == 'all'){
+                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
+                                        } elseif($_SESSION['mutasi_tahun'] == 'all'){
+                                            $datanya = mutasi::where('area_user', $_SESSION['mutasi_area'])->paginate(10);
+                                        }elseif($_SESSION['mutasi_area'] != 'all' && $_SESSION['mutasi_tahun'] != 'all'){
+                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->where('area_user', $_SESSION['mutasi_area'])->paginate(10);
+                                        }
+                                    }elseif($_SESSION['mutasi_tahun'] == 'all'){
+                                        if($_SESSION['mutasi_area'] == 'all'){
+                                            $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
+                                        } elseif($_SESSION['mutasi_bulan'] == 'all'){
+                                            $datanya = mutasi::where('area_user', $_SESSION['mutasi_area'])->paginate(10);
+                                        }elseif($_SESSION['mutasi_area'] != 'all' && $_SESSION['mutasi_bulan'] != 'all'){
+                                            $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->where('area_user', $_SESSION['mutasi_area'])->paginate(10);
+                                        }
+                                    }else{
+                                        $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->where('area_user', $_SESSION['mutasi_area'])->where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
+                                    }
+                                }
+                            }
+                            $data_user = user_manajemen::all();
+                            $mutasi_old = mutasi::all();
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya], compact('mutasi_old', 'data_user'));
+                        }
+
+                        if($menu == 'penghapusan'){
+                            if($_SESSION['penghapusan_time'] == 'now'){
+                                $datanya = penghapusan_now::paginate(10);
+                            } else {
+                                if($_SESSION['penghapusan_area'] == 'all' && $_SESSION['penghapusan_bulan'] == 'all' && $_SESSION['penghapusan_tahun'] == 'all'){
+                                    $datanya = penghapusan_now::paginate(10);
+                                } else{
+                                    if($_SESSION['penghapusan_area'] == 'all'){
+                                        if($_SESSION['penghapusan_bulan'] == 'all'){
+                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
+                                        } elseif($_SESSION['penghapusan_tahun'] == 'all'){
+                                            $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
+                                        }elseif($_SESSION['penghapusan_bulan'] != 'all' && $_SESSION['penghapusan_tahun'] != 'all'){
+                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
+                                        }
+                                    }elseif($_SESSION['penghapusan_bulan'] == 'all'){
+                                        if($_SESSION['penghapusan_area'] == 'all'){
+                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
+                                        } elseif($_SESSION['penghapusan_tahun'] == 'all'){
+                                            $datanya = penghapusan::where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
+                                        }elseif($_SESSION['penghapusan_area'] != 'all' && $_SESSION['penghapusan_tahun'] != 'all'){
+                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
+                                        }
+                                    }elseif($_SESSION['penghapusan_tahun'] == 'all'){
+                                        if($_SESSION['penghapusan_area'] == 'all'){
+                                            $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
+                                        } elseif($_SESSION['penghapusan_bulan'] == 'all'){
+                                            $datanya = penghapusan::where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
+                                        }elseif($_SESSION['penghapusan_area'] != 'all' && $_SESSION['penghapusan_bulan'] != 'all'){
+                                            $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
+                                        }
+                                    }else{
+                                        $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->where('area_user', $_SESSION['penghapusan_area'])->where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
+                                    }
+                                }
+                            }
+                            $data_user = user_manajemen::all();
+                            $penghapusan_old = penghapusan::all();
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya], compact('penghapusan_old', 'data_user'));
+                        }
+
+                        if($menu == 'export_to_excel'){
+                            return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                        }
+
                     }
                 }
             }else{
-                return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                // return redirect()->route('dashboard', ['menu' => 'dashboard']);
             }
         return redirect()->route('index');
         }

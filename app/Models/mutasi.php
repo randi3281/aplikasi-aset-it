@@ -30,5 +30,8 @@ class mutasi extends Model
         'mutasi_asal',
         'mutasi_tujuan',
         'keterangan_mutasi',
+        'bulan',
+        'tahun',
+        'area_user'
     ];
 }

@@ -76,7 +76,7 @@
                 <button type="submit" class="btn btn-primary btn ms-3"><b>Submit</b></button>
             </div>
         </form>
-        <p style="font-size: 14px" class="mb-4"> <b>Keterangan : <i></b>Area : {{ $_SESSION['data_barang_bulan'] }},
+        <p style="font-size: 14px" class="mb-4"> <b>Keterangan : <i></b>Area : {{ $_SESSION['data_barang_area'] }},
             Bulan :
             {{ $_SESSION['data_barang_bulan'] }}, Tahun
             :

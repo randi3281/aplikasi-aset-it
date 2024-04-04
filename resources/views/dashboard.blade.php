@@ -9,17 +9,18 @@
     <link rel="stylesheet" href="{{ asset('bt/css/bootstrap.css') }}">
 </head>
 
-@if (
-    $menu == 'dashboard' ||
-        $menu == 'user_manajemen' ||
-        $menu == 'mutasi' ||
-        $menu == 'penghapusan' ||
-        $menu == 'export_to_excel')
+@if ($menu == 'dashboard' || $menu == 'user_manajemen' || $menu == 'export_to_excel')
 
     <body class="bg-warning">
     @elseif ($menu == 'data_barang')
 
         <body class="bg-warning" style="width: 2500px">
+        @elseif ($menu == 'mutasi')
+
+            <body class="bg-warning" style="width: 2500px">
+        @elseif ($menu == 'penghapusan')
+
+            <body class="bg-warning" style="width: 2500px">
 @endif
 <div class="container-fluid">
     <div class="row">
@@ -31,17 +32,16 @@
                 @include('dashboard.navbar')
             </ul>
         </div>
-        @if (
-            $menu == 'dashboard' ||
-                $menu == 'user_manajemen' ||
-                $menu == 'mutasi' ||
-                $menu == 'penghapusan' ||
-                $menu == 'export_to_excel')
+        @if ($menu == 'dashboard' || $menu == 'user_manajemen' || $menu == 'export_to_excel')
             <div class="col-md-2">
             </div>
             <div class="col-md-10">
             @elseif ($menu == 'data_barang')
                 <div class="col-md-12" style="margin-left: 230px">
+                @elseif ($menu == 'mutasi')
+                    <div class="col-md-12" style="margin-left: 230px">
+                @elseif ($menu == 'penghapusan')
+                    <div class="col-md-12" style="margin-left: 230px">
         @endif
 
         @if ($posisi == 'admin')
