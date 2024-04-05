@@ -84,6 +84,8 @@ class HomeController extends Controller
                         }
 
                         if ($menu == 'data_barang'){
+                            jurnalhelper::resetsessionmutasi();
+                            jurnalhelper::resetsessionpenghapusan();
                             if($_SESSION['data_barang_time'] == 'now'){
                                 $datanya = data_barang_now::paginate(10);
                             } else {
@@ -125,6 +127,8 @@ class HomeController extends Controller
                         }
 
                         if($menu == 'mutasi'){
+                            jurnalhelper::resetsessiondatabarang();
+                            jurnalhelper::resetsessionpenghapusan();
                             if($_SESSION['mutasi_time'] == 'now'){
                                 $datanya = mutasi_now::paginate(10);
                             } else {
@@ -166,6 +170,8 @@ class HomeController extends Controller
                         }
 
                         if($menu == 'penghapusan'){
+                            jurnalhelper::resetsessionmutasi();
+                            jurnalhelper::resetsessiondatabarang();
                             if($_SESSION['penghapusan_time'] == 'now'){
                                 $datanya = penghapusan_now::paginate(10);
                             } else {
@@ -203,11 +209,15 @@ class HomeController extends Controller
                             }
                             $data_user = user_manajemen::all();
                             $penghapusan_old = penghapusan::all();
-                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya], compact('penghapusan_old', 'data_user'));
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE ['tanggal'], 'menu' => $menu, 'datanya' => $datanya], compact('penghapusan_old', 'data_user'));
                         }
 
                         if($menu == 'export_to_excel'){
-                            return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                            $data_user = user_manajemen::all();
+                            $data_barang_old = data_barang::all();
+                            $mutasi_old = mutasi::all();
+                            $penghapusan_old = penghapusan::all();
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE ['tanggal'], 'menu' => $menu], compact('data_user', 'penghapusan_old', 'mutasi_old', 'data_barang_old'));
                         }
 
                     }
