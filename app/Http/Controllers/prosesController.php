@@ -66,7 +66,7 @@ class prosesController extends Controller
     public function store(Request $request)
     {
         // Validasi input dari formulir
-        $request->validate([
+        $validasi = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'password' => 'required|string|max:255',
             'nik' => 'required|numeric',
@@ -83,12 +83,12 @@ class prosesController extends Controller
         $user->nik = $request->nik;
         $user->password = bcrypt($request->password);
         $user->posisi = $request->posisi;
-        $user->area = $request->area." ".$request->daerah;
+        $user->area = $request->area . " " . $request->daerah;
         $user->save();
 
         $area_user_aplikasi = new area_user_aplikasi;
         $area_user_aplikasi->nik = $request->nik;
-        $area_user_aplikasi->area_user = $request->area." ".$request->daerah;
+        $area_user_aplikasi->area_user = $request->area . " " . $request->daerah;
         $area_user_aplikasi->save();
 
         // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
