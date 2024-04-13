@@ -16,3 +16,7 @@ Route::delete('/admin/user/{id}/delete', [prosesController::class, 'destroy'])->
 Route::post('/databarangpilihan', [prosesController::class, 'databarangpilihan'])->name('data_barang_pilihan');
 Route::post('/mutasipilihan', [prosesController::class, 'mutasipilihan'])->name('mutasi_pilihan');
 Route::post('/penghapusanpilihan', [prosesController::class, 'penghapusanpilihan'])->name('penghapusan_pilihan');
+
+Route::post('/export_data_barang', [prosesController::class, 'export_data_barang'])->name('export.data_barang');
+Route::post('/export_mutasi', [prosesController::class, 'export_mutasi'])->name('export.mutasi');
+Route::post('/export_penghapusan', [prosesController::class, 'export_penghapusan'])->name('export.penghapusan');

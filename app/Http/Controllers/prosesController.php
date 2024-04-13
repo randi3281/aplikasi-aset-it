@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DataBarangExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\user_manajemen;
 use App\Models\area_user_aplikasi;
 use App\Helpers\jurnalhelper;
+use Maatwebsite\Excel\Facades\Excel;
 
 class prosesController extends Controller
 {
@@ -206,5 +208,10 @@ class prosesController extends Controller
         $_SESSION['penghapusan_bulan']= $request->bulan;
         $_SESSION['penghapusan_tahun']= $request->tahun;
         return redirect()->route('dashboard', ['menu' => 'penghapusan']);
+    }
+
+    public function export_data_barang()
+    {
+        return Excel::download(new DataBarangExport, 'Data Barang Now.xlsx');
     }
 }
