@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\DataBarangExport;
+use App\Exports\DataBarangNowExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -10,6 +10,9 @@ use App\Models\user_manajemen;
 use App\Models\area_user_aplikasi;
 use App\Helpers\jurnalhelper;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataBarangExport;
+use App\Exports\MutasiExport;
+use App\Exports\MutasiNowExport;
 
 class prosesController extends Controller
 {
@@ -210,8 +213,23 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'penghapusan']);
     }
 
-    public function export_data_barang()
+    public function export_data_barang(Request $request)
     {
-        return Excel::download(new DataBarangExport, 'Data Barang Now.xlsx');
+        session_start();
+        if($request->area == 'all' && $request->bulan == 'all' && $request->tahun == 'all'){
+            return Excel::download(new DataBarangNowExport, 'Data Barang Sekarang.xlsx');
+        } else {
+            return Excel::download(new DataBarangExport($request->bulan, $request->tahun, $request->area), 'Data Barang ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
+        }
+    }
+
+    public function export_mutasi(Request $request)
+    {
+        session_start();
+        if($request->area == 'all' && $request->bulan == 'all' && $request->tahun == 'all'){
+            return Excel::download(new MutasiNowExport, 'Mutasi Sekarang.xlsx');
+        } else {
+            return Excel::download(new MutasiExport($request->bulan, $request->tahun, $request->area), 'Mutasi ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
+        }
     }
 }

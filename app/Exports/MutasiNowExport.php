@@ -2,53 +2,28 @@
 
 namespace App\Exports;
 
-use App\Models\data_barang;
+use App\Models\mutasi_now;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class DataBarangExport implements FromCollection, WithHeadings
+class MutasiNowExport implements FromCollection, WithHeadings
 {
-    protected $bulan;
-    protected $tahun;
-    protected $area;
-
-    public function __construct($bulan, $tahun, $area)
-    {
-        $this->bulan = $bulan;
-        $this->tahun = $tahun;
-        $this->area = $area;
-    }
 
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $query = data_barang::query();
-
-        $query->when($this->bulan != 'all', function ($q) {
-            return $q->where('bulan', $this->bulan);
-        });
-
-        $query->when($this->tahun != 'all', function ($q) {
-            return $q->where('tahun', $this->tahun);
-        });
-
-        $query->when($this->area != 'all', function ($q) {
-            return $q->where('area_user', $this->area);
-        });
-
-        $data = $query->get(['id',
-                'tanggal_perolehan',
+        $data = mutasi_now::select(
+                'id',
                 'asset',
-                'kode_fa_fams',
+                'kode_fa',
                 'nama_barang',
-                'outlet_pencatatan',
                 'outlet_actual',
                 'type_barang',
                 'location',
                 'jabatan',
-                'nama_user',
+                'user_domain',
                 'nik',
                 'komputer_nama',
                 'ip_address',
@@ -57,9 +32,11 @@ class DataBarangExport implements FromCollection, WithHeadings
                 'serial_number',
                 'sophos',
                 'landesk',
-                'capex_or_selisih',
+                'mutasi_asal',
+                'mutasi_tujuan',
+                'keterangan_mutasi',
                 'area_user'
-            ]);
+            )->get();
 
         $nomorUrut = 0;
         $data->transform(function ($item) use (&$nomorUrut) {
@@ -78,12 +55,10 @@ class DataBarangExport implements FromCollection, WithHeadings
     {
         return [
             'No',
-            'Tanggal Perolehan',
             'Asset',
             'Kode Fa Fams',
             'Nama Barang',
-            'Outlet Pencatatan',
-            'Outlet Actual',
+            'Outlet Asal',
             'Type Barang',
             'Location',
             'Jabatan',
@@ -96,8 +71,11 @@ class DataBarangExport implements FromCollection, WithHeadings
             'Serial Number',
             'Sophos',
             'Landesk',
-            'Capex atau Selisih',
+            'Mutasi Asal',
+            'Mutasi Tujuan',
+            'Keterangan Mutasi',
             'Area User'
         ];
     }
 }
+

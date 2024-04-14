@@ -2,11 +2,11 @@
 
 namespace App\Exports;
 
-use App\Models\data_barang;
+use App\Models\mutasi;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class DataBarangExport implements FromCollection, WithHeadings
+class MutasiExport implements FromCollection, WithHeadings
 {
     protected $bulan;
     protected $tahun;
@@ -24,7 +24,7 @@ class DataBarangExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        $query = data_barang::query();
+        $query = mutasi::query();
 
         $query->when($this->bulan != 'all', function ($q) {
             return $q->where('bulan', $this->bulan);
@@ -38,17 +38,16 @@ class DataBarangExport implements FromCollection, WithHeadings
             return $q->where('area_user', $this->area);
         });
 
-        $data = $query->get(['id',
-                'tanggal_perolehan',
+        $data = $query->get([
+                'id',
                 'asset',
-                'kode_fa_fams',
+                'kode_fa',
                 'nama_barang',
-                'outlet_pencatatan',
                 'outlet_actual',
                 'type_barang',
                 'location',
                 'jabatan',
-                'nama_user',
+                'user_domain',
                 'nik',
                 'komputer_nama',
                 'ip_address',
@@ -57,7 +56,9 @@ class DataBarangExport implements FromCollection, WithHeadings
                 'serial_number',
                 'sophos',
                 'landesk',
-                'capex_or_selisih',
+                'mutasi_asal',
+                'mutasi_tujuan',
+                'keterangan_mutasi',
                 'area_user'
             ]);
 
@@ -78,12 +79,10 @@ class DataBarangExport implements FromCollection, WithHeadings
     {
         return [
             'No',
-            'Tanggal Perolehan',
             'Asset',
             'Kode Fa Fams',
             'Nama Barang',
-            'Outlet Pencatatan',
-            'Outlet Actual',
+            'Outlet Asal',
             'Type Barang',
             'Location',
             'Jabatan',
@@ -96,7 +95,9 @@ class DataBarangExport implements FromCollection, WithHeadings
             'Serial Number',
             'Sophos',
             'Landesk',
-            'Capex atau Selisih',
+            'Mutasi Asal',
+            'Mutasi Tujuan',
+            'Keterangan Mutasi',
             'Area User'
         ];
     }

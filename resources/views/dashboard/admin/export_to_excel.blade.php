@@ -109,6 +109,7 @@
                 <div class="card-body">
                     {{-- <form action="{{route('proses.export.mutasi')}}" method="POST"> --}}
                     <form action="{{ route('proses.export.mutasi') }}" method="POST">
+                        @csrf
                         <div class="form-group mb-2 ">
                             <label for="area">Area</label>
                             <select class="form-control" id="area" name="area">
@@ -205,6 +206,7 @@
                 <div class="card-body">
                     {{-- <form action="{{route('proses.export.penghapusan')}}" method="POST"> --}}
                     <form action="{{ route('proses.export.penghapusan') }}" method="POST">
+                        @csrf
                         <div class="form-group mb-2 ">
                             <label for="area">Area</label>
                             <select class="form-control" id="area" name="area">
