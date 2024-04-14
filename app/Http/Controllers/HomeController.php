@@ -53,19 +53,19 @@ class HomeController extends Controller
                         }
 
                         if($menu == 'data_barang'){
-                            return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']], compact('menu'));
                         }
 
                         if($menu == 'mutasi'){
-                            return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']], compact('menu'));
                         }
 
                         if($menu == 'penghapusan'){
-                            return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']], compact('menu'));
                         }
 
                         if($menu == 'export_to_excel'){
-                            return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']], compact('menu'));
                         }
 
                     } elseif($_COOKIE['posisi'] == 'admin'){
@@ -73,6 +73,7 @@ class HomeController extends Controller
                         if($menu == 'dashboard'){
                             $datanya = user_manajemen::all();
                             jurnalhelper::resetsession();
+                            jurnalhelper::resetedit();
                             return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal'], 'menu' => $menu, 'datanya' => $datanya]);
                         }
 
@@ -85,6 +86,7 @@ class HomeController extends Controller
 
                         if ($menu == 'data_barang'){
                             jurnalhelper::resetsessionmutasi();
+                            jurnalhelper::resetedit();
                             jurnalhelper::resetsessionpenghapusan();
                             if($_SESSION['data_barang_time'] == 'now'){
                                 $datanya = data_barang_now::paginate(10);
@@ -128,6 +130,7 @@ class HomeController extends Controller
 
                         if($menu == 'mutasi'){
                             jurnalhelper::resetsessiondatabarang();
+                            jurnalhelper::resetedit();
                             jurnalhelper::resetsessionpenghapusan();
                             if($_SESSION['mutasi_time'] == 'now'){
                                 $datanya = mutasi_now::paginate(10);
@@ -171,6 +174,7 @@ class HomeController extends Controller
 
                         if($menu == 'penghapusan'){
                             jurnalhelper::resetsessionmutasi();
+                            jurnalhelper::resetedit();
                             jurnalhelper::resetsessiondatabarang();
                             if($_SESSION['penghapusan_time'] == 'now'){
                                 $datanya = penghapusan_now::paginate(10);
@@ -213,6 +217,8 @@ class HomeController extends Controller
                         }
 
                         if($menu == 'export_to_excel'){
+                            jurnalhelper::resetsession();
+                            jurnalhelper::resetedit();
                             $data_user = user_manajemen::all();
                             $data_barang_old = data_barang::all();
                             $mutasi_old = mutasi::all();

@@ -46,9 +46,6 @@
 
         @if ($posisi == 'admin')
             @if ($menu == 'dashboard')
-                @php
-                    $_SESSION['edit'] = 'tidak';
-                @endphp
                 @include('dashboard.admin.dashboard')
             @elseif ($menu == 'user_manajemen')
                 @include('dashboard.admin.user_manajemen')
