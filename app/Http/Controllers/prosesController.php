@@ -13,6 +13,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DataBarangExport;
 use App\Exports\MutasiExport;
 use App\Exports\MutasiNowExport;
+use App\Exports\PenghapusanExport;
+use App\Exports\PenghapusanNowExport;
 
 class prosesController extends Controller
 {
@@ -230,6 +232,15 @@ class prosesController extends Controller
             return Excel::download(new MutasiNowExport, 'Mutasi Sekarang.xlsx');
         } else {
             return Excel::download(new MutasiExport($request->bulan, $request->tahun, $request->area), 'Mutasi ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
+        }
+    }
+    public function export_penghapusan(Request $request)
+    {
+        session_start();
+        if($request->area == 'all' && $request->bulan == 'all' && $request->tahun == 'all'){
+            return Excel::download(new PenghapusanNowExport, 'Penghapusan Sekarang.xlsx');
+        } else {
+            return Excel::download(new PenghapusanExport($request->bulan, $request->tahun, $request->area), 'Penghapusan ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
         }
     }
 }
