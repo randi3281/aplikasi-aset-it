@@ -14,7 +14,7 @@
     <body class="bg-warning">
     @elseif ($menu == 'data_barang')
 
-        <body class="bg-warning" style="width: 2500px">
+        <body class="bg-warning" style="width: 3500px">
         @elseif ($menu == 'mutasi')
 
             <body class="bg-warning" style="width: 2700px">
