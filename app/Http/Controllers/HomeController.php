@@ -49,6 +49,7 @@ class HomeController extends Controller
 
                         if($menu == 'dashboard'){
                             $datanya = user_manajemen::all();
+                            jurnalhelper::resetsession();
                             return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']], compact('menu'));
                         }
 
