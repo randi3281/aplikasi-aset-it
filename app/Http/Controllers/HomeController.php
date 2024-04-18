@@ -57,6 +57,9 @@ class HomeController extends Controller
                             jurnalhelper::resetsessionmutasi();
                             jurnalhelper::resetedit();
                             jurnalhelper::resetsessionpenghapusan();
+                            if(!isset($_SESSION['data_barang_time'])){
+                                return redirect()->route('dashboard', ['menu' => 'dashboard']);
+                            }
                             if($_SESSION['data_barang_time'] == 'now'){
                                 $datanya = data_barang_now::paginate(10);
                             } else {

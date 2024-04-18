@@ -15,6 +15,13 @@ use App\Exports\MutasiExport;
 use App\Exports\MutasiNowExport;
 use App\Exports\PenghapusanExport;
 use App\Exports\PenghapusanNowExport;
+use App\Models\data_barang_now;
+use App\Models\data_barang;
+use App\Models\penghapusan_now;
+use App\Models\penghapusan;
+use App\Models\mutasi_now;
+use App\Models\mutasi;
+use Carbon\Carbon;
 
 class prosesController extends Controller
 {
@@ -242,5 +249,58 @@ class prosesController extends Controller
         } else {
             return Excel::download(new PenghapusanExport($request->bulan, $request->tahun, $request->area), 'Penghapusan ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
         }
+    }
+
+    public function store_pengguna(Request $request)
+    {
+        // Validasi input dari formulir
+        $validator = Validator::make($request->all(), [
+            'tanggal_perolehan' => 'required|date',
+            'nama_barang_asset' => 'required|string|max:255',
+            'kode_fa_fams' => 'required|string|max:255',
+            'nama_barang' => 'required|string|max:255',
+            'outlet_pencatatan' => 'required|string|max:255',
+            'outlet_actual' => 'required|string|max:255',
+            'type_barang' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'jabatan' => 'required|string|max:255',
+            'nama_user' => 'required|string|max:255',
+            'nik' => 'required|numeric',
+            'nama_komputer' => 'required|string|max:255',
+            'ip_address' => 'required|string|max:255',
+            'kondisi' => 'required|string|max:255',
+            'keterangan' => 'required|string|max:255',
+            'serial_number' => 'required|string|max:255',
+            'shopos' => 'required|string|max:255',
+            'landesk' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $data_barang_now = new data_barang_now;
+        $data_barang_now->tanggal_perolehan = $request->tanggal_perolehan;
+        $data_barang_now->asset = $request->nama_barang_asset;
+        $data_barang_now->kode_fa_fams = $request->kode_fa_fams;
+        $data_barang_now->nama_barang = $request->nama_barang;
+        $data_barang_now->outlet_pencatatan = $request->outlet_pencatatan;
+        $data_barang_now->outlet_actual = $request->outlet_actual;
+        $data_barang_now->type_barang = $request->type_barang;
+        $data_barang_now->location = $request->location;
+        $data_barang_now->jabatan = $request->jabatan;
+        $data_barang_now->nama_user = $request->nama_user;
+        $data_barang_now->nik = $request->nik;
+        $data_barang_now->komputer_nama = $request->nama_komputer;
+        $data_barang_now->ip_address = $request->ip_address;
+        $data_barang_now->kondisi = $request->kondisi;
+        $data_barang_now->keterangan = $request->keterangan;
+        $data_barang_now->serial_number = $request->serial_number;
+        $data_barang_now->sophos = $request->shopos;
+        $data_barang_now->landesk = $request->landesk;
+        $data_barang_now->save();
+
+
+        return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
 }
