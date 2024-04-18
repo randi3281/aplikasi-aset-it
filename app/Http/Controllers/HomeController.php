@@ -55,7 +55,6 @@ class HomeController extends Controller
 
                         if($menu == 'data_barang'){
                             jurnalhelper::resetsessionmutasi();
-                            jurnalhelper::resetedit();
                             jurnalhelper::resetsessionpenghapusan();
                             if(!isset($_SESSION['data_barang_time'])){
                                 return redirect()->route('dashboard', ['menu' => 'dashboard']);

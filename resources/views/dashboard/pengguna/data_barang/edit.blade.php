@@ -2,12 +2,13 @@
     <thead>
         <tr class="text-center align-text-center" style="height: 80px">
             <th>
-                <h3>Input</h3>
+                <h3>Edit</h3>
             </th>
         </tr>
     </thead>
     <tbody>
-        <form action="{{ route('proses.pengguna.store') }}" method="POST">
+        {{-- <form action="{{ route('proses.pengguna.update') }}" method="POST"> --}}
+        <form action="" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -156,20 +157,21 @@
             </tr>
             <tr>
                 <td>
-                    <div class="form-group mx-3">
-                        <label for="shopos">Shopos</label>
-                        <input type="text" name="shopos" id="shopos" class="form-control" autofocus>
+                    <div class="form-group mx-3 d-flex">
+                        <label for="shopos" class="me-2">Shopos</label>
+                        <select name="shopos" id="shopos" class="form-control w-25 me-3">
+                            <option value="iya">Iya</option>
+                            <option value="tidak">Tidak</option>
+                        </select>
+                        <label for="landesk" class="me-2">Landesk</label>
+                        <select name="landesk" id="landesk" class="form-control w-25">
+                            <option value="iya">Iya</option>
+                            <option value="tidak">Tidak</option>
+                        </select>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div class="form-group mx-3">
-                        <label for="landesk">Landesk</label>
-                        <input type="text" name="landesk" id="landesk" class="form-control" autofocus>
-                    </div>
-                </td>
-            </tr>
+
             <tr class="text-center">
                 <td>
                     <button type="submit" class="btn btn-primary w-50 mb-2">Submit</button>

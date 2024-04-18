@@ -25,4 +25,4 @@ Route::post('/export_penghapusan', [prosesController::class, 'export_penghapusan
 Route::post('/pengguna/store', [prosesController::class, 'store_pengguna'])->name('pengguna.store');
 Route::get('/pengguna/{id}/edit', [prosesController::class, 'edit_pengguna'])->name('pengguna.edit');
 Route::post('/pengguna/{id}', [prosesController::class, 'update_pengguna'])->name('pengguna.update');
-Route::delete('/pengguna/{id}/delete', [prosesController::class, 'destroy_pengguna'])->name('pengguna.delete');
+Route::get('/pengguna/{id}/delete', [prosesController::class, 'destroy_pengguna'])->name('pengguna.delete');

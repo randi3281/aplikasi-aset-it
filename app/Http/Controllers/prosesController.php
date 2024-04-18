@@ -310,12 +310,22 @@ class prosesController extends Controller
         // Temukan entitas pengguna berdasarkan ID
         $useredit = data_barang_now::findOrFail($id);
         // buatlah session yang menandakan edit iya
-        $_SESSION['edit'] = 'iya';
+        session(['edit' => 'iya']);
         session(['useredit' => $useredit]);
 
         // Tampilkan view edit dengan data pengguna yang akan diedit
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
 
-    
+    public function destroy_pengguna($id){
+        // Temukan entitas pengguna berdasarkan ID
+        $user = data_barang_now::findOrFail($id);
+
+        // Hapus data pengguna
+        $user->delete();
+
+        // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
+        return redirect()->route('dashboard', ['menu' => 'data_barang']);
+    }
+
 }
