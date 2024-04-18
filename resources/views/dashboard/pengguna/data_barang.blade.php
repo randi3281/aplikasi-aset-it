@@ -137,9 +137,9 @@
                         <td>{{ $data->sophos }}</td>
                         <td>{{ $data->landesk }}</td>
                         <td>
-                            <button class="btn btn-warning">Edit</button>
+                            <a href="{{route('proses.pengguna.edit', ['id' => $data->id])}}" class="btn btn-warning">Edit</a>
                             |
-                            <button class="btn btn-danger">Hapus</button>
+                            <a href="{{route('proses.pengguna.delete', ['id' => $data->id])}}" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
                 @endforeach

@@ -303,4 +303,19 @@ class prosesController extends Controller
 
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
+
+    public function edit_pengguna($id)
+    {
+        session_start();
+        // Temukan entitas pengguna berdasarkan ID
+        $useredit = data_barang_now::findOrFail($id);
+        // buatlah session yang menandakan edit iya
+        $_SESSION['edit'] = 'iya';
+        session(['useredit' => $useredit]);
+
+        // Tampilkan view edit dengan data pengguna yang akan diedit
+        return redirect()->route('dashboard', ['menu' => 'data_barang']);
+    }
+
+    
 }
