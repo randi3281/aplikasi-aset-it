@@ -29,7 +29,7 @@
                     <div class="form-group mx-3">
                         <label for="tanggal_perolehan">Tanggal Perolehan</label>
                         <input type="date" name="tanggal_perolehan" id="tanggal_perolehan" class="form-control"
-                            autofocus>
+                            value="{{ session('useredit')->tanggal_perolehan }}" autofocus>
                     </div>
                 </td>
             </tr>
@@ -38,7 +38,7 @@
                     <div class="form-group mx-3">
                         <label for="nama_barang_asset">Asset</label>
                         <input type="text" name="nama_barang_asset" id="nama_barang_asset" class="form-control"
-                            autofocus>
+                            value="{{ session('useredit')->asset }}">
                     </div>
                 </td>
             </tr>
@@ -46,7 +46,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="kode_fa_fams">Kode FA FAMS</label>
-                        <input type="text" name="kode_fa_fams" id="kode_fa_fams" class="form-control" autofocus>
+                        <input type="text" name="kode_fa_fams" id="kode_fa_fams" class="form-control"
+                            value="{{ session('useredit')->kode_fa_fams }}">
                     </div>
                 </td>
             </tr>
@@ -54,7 +55,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="nama_barang">Nama Barang</label>
-                        <input type="text" name="nama_barang" id="nama_barang" class="form-control" autofocus>
+                        <input type="text" name="nama_barang" id="nama_barang" class="form-control"
+                            value="{{ session('useredit')->nama_barang }}">
                     </div>
                 </td>
             </tr>
@@ -63,7 +65,7 @@
                     <div class="form-group mx-3">
                         <label for="outlet_pencatatan">Outlet Pencatatan</label>
                         <input type="text" name="outlet_pencatatan" id="outlet_pencatatan" class="form-control"
-                            autofocus>
+                            value="{{ session('useredit')->outlet_pencatatan }}">
                     </div>
                 </td>
             </tr>
@@ -71,7 +73,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="outlet_actual">Outlet Actual</label>
-                        <input type="text" name="outlet_actual" id="outlet_actual" class="form-control" autofocus>
+                        <input type="text" name="outlet_actual" id="outlet_actual" class="form-control"
+                            value="{{ session('useredit')->outlek_actual }}">
                     </div>
                 </td>
             </tr>
@@ -79,7 +82,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="type_barang">Type Barang</label>
-                        <input type="text" name="type_barang" id="type_barang" class="form-control" autofocus>
+                        <input type="text" name="type_barang" id="type_barang" class="form-control"
+                            value="{{ session('useredit')->type_barang }}">
                     </div>
                 </td>
             </tr>
@@ -87,7 +91,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="location">Location</label>
-                        <input type="text" name="location" id="location" class="form-control" autofocus>
+                        <input type="text" name="location" id="location" class="form-control"
+                            value="{{ session('useredit')->location }}">
                     </div>
                 </td>
             </tr>
@@ -95,7 +100,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="jabatan">Jabatan</label>
-                        <input type="text" name="jabatan" id="jabatan" class="form-control" autofocus>
+                        <input type="text" name="jabatan" id="jabatan" class="form-control"
+                            value="{{ session('useredit')->jabatan }}">
                     </div>
                 </td>
             </tr>
@@ -103,7 +109,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="nama_user">Nama User</label>
-                        <input type="text" name="nama_user" id="nama_user" class="form-control" autofocus>
+                        <input type="text" name="nama_user" id="nama_user" class="form-control"
+                            value="{{ session('useredit')->nama_user }}">
                     </div>
                 </td>
             </tr>
@@ -111,7 +118,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="nik">NIK</label>
-                        <input type="text" name="nik" id="nik" class="form-control" autofocus>
+                        <input type="text" name="nik" id="nik" class="form-control"
+                            value="{{ session('useredit')->nik }}">
                     </div>
                 </td>
             </tr>
@@ -119,7 +127,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="nama_komputer">Nama Komputer</label>
-                        <input type="text" name="nama_komputer" id="nama_komputer" class="form-control" autofocus>
+                        <input type="text" name="nama_komputer" id="nama_komputer" class="form-control"
+                            value="{{ session('useredit')->komputer_nama }}">
                     </div>
                 </td>
             </tr>
@@ -127,7 +136,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="ip_address">IP Address</label>
-                        <input type="text" name="ip_address" id="ip_address" class="form-control" autofocus>
+                        <input type="text" name="ip_address" id="ip_address" class="form-control"
+                            value="{{ session('useredit')->ip_address }}">
                     </div>
                 </td>
             </tr>
@@ -135,7 +145,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="kondisi">Kondisi</label>
-                        <input type="text" name="kondisi" id="kondisi" class="form-control" autofocus>
+                        <input type="text" name="kondisi" id="kondisi" class="form-control"
+                            value="{{ session('useredit')->kondisi }}">
                     </div>
                 </td>
             </tr>
@@ -143,7 +154,8 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="keterangan">Keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan" class="form-control" autofocus>
+                        <input type="text" name="keterangan" id="keterangan" class="form-control"
+                            value="{{ session('useredit')->keterangan }}">
                     </div>
                 </td>
             </tr>
@@ -151,22 +163,30 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="serial_number">Serial Number</label>
-                        <input type="text" name="serial_number" id="serial_number" class="form-control" autofocus>
+                        <input type="text" name="serial_number" id="serial_number" class="form-control"
+                            value="{{ session('useredit')->serial_number }}">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="form-group mx-3 d-flex">
-                        <label for="shopos" class="me-2">Shopos</label>
-                        <select name="shopos" id="shopos" class="form-control w-25 me-3">
-                            <option value="iya">Iya</option>
-                            <option value="tidak">Tidak</option>
+                        <label for="area">Shopos: </label>
+                        <select name="area" class="form-control-sm" id="subarea">
+                            @if (session('useredit')->sophos == 'Iya')
+                                <option value="Iya">Iya</option>
+                                <option value="Tidak">Tidak</option>
+                            @elseif (session('useredit')->sophos == 'Tidak')
+                            <option value="Tidak">Tidak</option>
+                            <option value="Iya">Iya</option>
+                            @endif
                         </select>
                         <label for="landesk" class="me-2">Landesk</label>
                         <select name="landesk" id="landesk" class="form-control w-25">
-                            <option value="iya">Iya</option>
-                            <option value="tidak">Tidak</option>
+                            <option value="iya" {{ session('useredit')->landesk == 'iya' ? 'selected' : '' }}>Iya
+                            </option>
+                            <option value="tidak" {{ session('useredit')->landesk == 'tidak' ? 'selected' : '' }}>
+                                Tidak</option>
                         </select>
                     </div>
                 </td>

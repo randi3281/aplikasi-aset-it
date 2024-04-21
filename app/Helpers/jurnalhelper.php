@@ -86,6 +86,7 @@ class jurnalhelper
     }
 
     public static function resetedit(){
-        $_SESSION['edit'] = 'tidak';
+
+        session(['edit' => 'tidak']);
     }
 }
