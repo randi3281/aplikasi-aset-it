@@ -3,7 +3,7 @@
         <h5 class="text-center">Edit User</h5>
     </div>
     <div class="card-body">
-        <form action="{{ route('proses.admin.user.update', ['id' => session('useredit')->id]) }}" method="post">
+        <form action="{{ route('proses.admin.user_manajemen.update', ['id' => session('useredit')->id]) }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="nama">Nama</label>

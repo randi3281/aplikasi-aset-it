@@ -25,6 +25,8 @@ use Carbon\Carbon;
 
 class prosesController extends Controller
 {
+
+    // Start Proses Akun
     public function login(Request $request)
     {
         session_start();
@@ -77,9 +79,13 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'dashboard']);
     }
 
+    // End Proses Akun
+
+
+    // Start Admin
+    // Start Proses User Manajemen Admin
     public function store(Request $request)
     {
-        // Validasi input dari formulir
         $validasi = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'password' => 'required|string|max:255',
@@ -89,10 +95,8 @@ class prosesController extends Controller
             'daerah' => 'required|string|max:255',
         ]);
 
-        // Buat entitas pengguna baru
         $user = new user_manajemen;
 
-        // Isi data pengguna dengan data dari formulir
         $user->nama = $request->nama;
         $user->nik = $request->nik;
         $user->password = bcrypt($request->password);
@@ -105,40 +109,31 @@ class prosesController extends Controller
         $area_user_aplikasi->area_user = $request->area . " " . $request->daerah;
         $area_user_aplikasi->save();
 
-        // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
 
     public function edit($id)
     {
         session_start();
-        // Temukan entitas pengguna berdasarkan ID
         $useredit = user_manajemen::findOrFail($id);
-        // buatlah session yang menandakan edit iya
         $_SESSION['edit'] = 'iya';
         session(['useredit' => $useredit]);
 
-        $words = explode(' ', $useredit->area); // Membagi nilai berdasarkan spasi
+        $words = explode(' ', $useredit->area);
 
-        // Mengabaikan elemen pertama (kata1)
         $wordsExceptFirst = array_slice($words, 1);
 
-        // Menampilkan kata-kata selain kata pertama
-        // buatlah array kata
         $katabaru = array();
         foreach ($wordsExceptFirst as $word) {
-            // inputkan ke array katabaru
             array_push($katabaru, $word);
 
         }
-        // buatlah katabaru menjadi sebuah kalimat dengan tambahan spasi
+
         $katapertama = $words[0];
         $katabaru = implode(" ", $katabaru);
         session(['area' => $katabaru]);
         session(['katapertama' => $katapertama]);
 
-
-        // Tampilkan view edit dengan data pengguna yang akan diedit
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
 
@@ -147,20 +142,9 @@ class prosesController extends Controller
         session_start();
             $_SESSION['edit'] = 'tidak';
         if(isset($request->tomboledit)){
-            // Validasi input dari formulir
-            $request->validate([
-                // 'nama' => 'required|string|max:255',
-                // 'password' => 'required|string|max:255',
-                // 'nik' => 'required|numeric',
-                // 'posisi' => 'required|string|max:255',
-                // 'area' => 'required|string|max:255',
-                // 'daerah' => 'required|string|max:255',
-            ]);
 
-            // Temukan entitas pengguna berdasarkan ID
             $user = user_manajemen::findOrFail($id);
 
-            // Update data pengguna dengan data baru dari formulir
             $user->nama = $request->nama;
             $user->nik = $request->nik;
             if($request->password != null){
@@ -170,7 +154,6 @@ class prosesController extends Controller
             $user->area = $request->area." ".$request->daerah;
             $user->save();
 
-            // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
             return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
         }
 
@@ -182,17 +165,14 @@ class prosesController extends Controller
 
     public function destroy($id)
     {
-        // Temukan entitas pengguna berdasarkan ID
         $user = user_manajemen::findOrFail($id);
-
-        // Hapus data pengguna
         $user->delete();
-
-        // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
+    // End User Manajemen Admin
 
-    public function databarangpilihan(Request $request)
+    // Start Data Barang Admin
+    public function data_barang_pilihan(Request $request)
     {
         session_start();
         $_SESSION['data_barang_time'] = 'old';
@@ -201,7 +181,9 @@ class prosesController extends Controller
         $_SESSION['data_barang_tahun']= $request->tahun;
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
+    // End Data Barang Admin
 
+    // Start Mutasi Admin
     public function mutasipilihan(Request $request)
     {
         session_start();
@@ -211,7 +193,9 @@ class prosesController extends Controller
         $_SESSION['mutasi_tahun']= $request->tahun;
         return redirect()->route('dashboard', ['menu' => 'mutasi']);
     }
+    // End Mutasi Admin
 
+    // Start Penghapusan Admin
     public function penghapusanpilihan(Request $request)
     {
         session_start();
@@ -221,7 +205,9 @@ class prosesController extends Controller
         $_SESSION['penghapusan_tahun']= $request->tahun;
         return redirect()->route('dashboard', ['menu' => 'penghapusan']);
     }
+    // End Penghapusan Admin
 
+    // Start Export to Excel Admin
     public function export_data_barang(Request $request)
     {
         session_start();
@@ -250,10 +236,13 @@ class prosesController extends Controller
             return Excel::download(new PenghapusanExport($request->bulan, $request->tahun, $request->area), 'Penghapusan ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
         }
     }
+    // End Export To Excel Admin
+    // End Admin
 
+    // Start Pengguna
+    // Start Data Barang Pengguna
     public function store_pengguna(Request $request)
     {
-        // Validasi input dari formulir
         $validator = Validator::make($request->all(), [
             'tanggal_perolehan' => 'required|date',
             'nama_barang_asset' => 'required|string|max:255',
@@ -307,25 +296,21 @@ class prosesController extends Controller
     public function edit_pengguna($id)
     {
         session_start();
-        // Temukan entitas pengguna berdasarkan ID
         $useredit = data_barang_now::findOrFail($id);
-        // buatlah session yang menandakan edit iya
         session(['edit' => 'iya']);
         session(['useredit' => $useredit]);
 
-        // Tampilkan view edit dengan data pengguna yang akan diedit
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
 
     public function destroy_pengguna($id){
-        // Temukan entitas pengguna berdasarkan ID
         $user = data_barang_now::findOrFail($id);
 
-        // Hapus data pengguna
         $user->delete();
 
-        // Redirect kembali ke halaman sebelumnya atau halaman lain yang diinginkan
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
+    // End Data Barang Pengguna
+    // End Pengguna
 
 }

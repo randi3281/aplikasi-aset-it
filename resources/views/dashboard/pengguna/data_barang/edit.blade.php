@@ -7,8 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        {{-- <form action="{{ route('proses.pengguna.update') }}" method="POST"> --}}
-        <form action="" method="POST">
+        <form action="{{ route('proses.pengguna.update', ['id' => session('id') ]) }}" method="POST">
             @csrf
 
             @if ($errors->any())
@@ -171,22 +170,25 @@
             <tr>
                 <td>
                     <div class="form-group mx-3 d-flex">
-                        <label for="area">Shopos: </label>
-                        <select name="area" class="form-control-sm" id="subarea">
+                        <label for="sophos">Shopos: </label>
+                        <select name="sophos" class="form-control-sm me-3 ms-1" id="sophos">
                             @if (session('useredit')->sophos == 'Iya')
                                 <option value="Iya">Iya</option>
                                 <option value="Tidak">Tidak</option>
                             @elseif (session('useredit')->sophos == 'Tidak')
-                            <option value="Tidak">Tidak</option>
-                            <option value="Iya">Iya</option>
+                                <option value="Tidak">Tidak</option>
+                                <option value="Iya">Iya</option>
                             @endif
                         </select>
-                        <label for="landesk" class="me-2">Landesk</label>
-                        <select name="landesk" id="landesk" class="form-control w-25">
-                            <option value="iya" {{ session('useredit')->landesk == 'iya' ? 'selected' : '' }}>Iya
-                            </option>
-                            <option value="tidak" {{ session('useredit')->landesk == 'tidak' ? 'selected' : '' }}>
-                                Tidak</option>
+                        <label for="landesk">Landesk: </label>
+                        <select name="landesk" class="form-control-sm me-3 ms-1" id="landesk">
+                            @if (session('useredit')->landesk == 'Iya')
+                                <option value="Iya">Iya</option>
+                                <option value="Tidak">Tidak</option>
+                            @elseif (session('useredit')->landesk == 'Tidak')
+                                <option value="Tidak">Tidak</option>
+                                <option value="Iya">Iya</option>
+                            @endif
                         </select>
                     </div>
                 </td>
@@ -194,7 +196,8 @@
 
             <tr class="text-center">
                 <td>
-                    <button type="submit" class="btn btn-primary w-50 mb-2">Submit</button>
+                    <button type="submit" class="btn btn-danger w-25 mb-2" name="bataltombol">Batal</button>
+                    <button type="submit" class="btn btn-primary w-50 mb-2" name="submittombol">Submit</button>
                 </td>
             </tr>
         </form>
