@@ -7,7 +7,8 @@
         </tr>
     </thead>
     <tbody>
-        <form action="{{ route('proses.pengguna.data_barang.update', ['id' => session('useredit')->id ]) }}" method="POST">
+        <form action="{{ route('proses.pengguna.data_barang.update', ['id' => session('useredit')->id]) }}"
+            method="POST">
             @csrf
 
             @if ($errors->any())
@@ -73,7 +74,7 @@
                     <div class="form-group mx-3">
                         <label for="outlet_actual">Outlet Actual</label>
                         <input type="text" name="outlet_actual" id="outlet_actual" class="form-control"
-                            value="{{ session('useredit')->outlek_actual }}">
+                            value="{{ session('useredit')->outlet_actual }}">
                     </div>
                 </td>
             </tr>
@@ -178,6 +179,9 @@
                             @elseif (session('useredit')->sophos == 'Tidak')
                                 <option value="Tidak">Tidak</option>
                                 <option value="Iya">Iya</option>
+                            @else
+                                <option value="Iya">Iya</option>
+                                <option value="Tidak">Tidak</option>
                             @endif
                         </select>
                         <label for="landesk">Landesk: </label>
@@ -188,6 +192,9 @@
                             @elseif (session('useredit')->landesk == 'Tidak')
                                 <option value="Tidak">Tidak</option>
                                 <option value="Iya">Iya</option>
+                            @else
+                                <option value="Iya">Iya</option>
+                                <option value="Tidak">Tidak</option>
                             @endif
                         </select>
                     </div>

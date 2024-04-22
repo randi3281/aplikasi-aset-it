@@ -84,7 +84,7 @@ class prosesController extends Controller
 
     // Start Admin
     // Start Proses User Manajemen Admin
-    public function store(Request $request)
+    public function admin_usermanajemen_store(Request $request)
     {
         $validasi = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
@@ -112,7 +112,7 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
 
-    public function edit($id)
+    public function admin_usermanajemen_edit($id)
     {
         session_start();
         $useredit = user_manajemen::findOrFail($id);
@@ -137,7 +137,7 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'user_manajemen']);
     }
 
-    public function update(Request $request, $id)
+    public function admin_usermanajemen_update(Request $request, $id)
     {
         session_start();
             $_SESSION['edit'] = 'tidak';
@@ -163,7 +163,7 @@ class prosesController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function admin_usermanajemen_destroy($id)
     {
         $user = user_manajemen::findOrFail($id);
         $user->delete();
@@ -238,7 +238,7 @@ class prosesController extends Controller
 
     // Start Pengguna
     // Start Data Barang Pengguna
-    public function store_pengguna(Request $request)
+    public function pengguna_databarang_store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'tanggal_perolehan' => 'required|date',
@@ -290,7 +290,7 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
 
-    public function edit_pengguna($id)
+    public function pengguna_databarang_edit($id)
     {
         session_start();
         $useredit = data_barang_now::findOrFail($id);
@@ -300,7 +300,37 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
 
-    public function destroy_pengguna($id){
+    public function pengguna_databarang_update(Request $request, $id)
+    {
+
+        $data_barang_now = data_barang_now::findOrFail($id);
+        $data_barang_now->tanggal_perolehan = $request->tanggal_perolehan;
+        $data_barang_now->asset = $request->nama_barang_asset;
+        $data_barang_now->kode_fa_fams = $request->kode_fa_fams;
+        $data_barang_now->nama_barang = $request->nama_barang;
+        $data_barang_now->outlet_pencatatan = $request->outlet_pencatatan;
+        $data_barang_now->outlet_actual = $request->outlet_actual;
+        $data_barang_now->type_barang = $request->type_barang;
+        $data_barang_now->location = $request->location;
+        $data_barang_now->jabatan = $request->jabatan;
+        $data_barang_now->nama_user = $request->nama_user;
+        $data_barang_now->nik = $request->nik;
+        $data_barang_now->komputer_nama = $request->nama_komputer;
+        $data_barang_now->ip_address = $request->ip_address;
+        $data_barang_now->kondisi = $request->kondisi;
+        $data_barang_now->keterangan = $request->keterangan;
+        $data_barang_now->serial_number = $request->serial_number;
+        $data_barang_now->sophos = $request->sophos;
+        $data_barang_now->landesk = $request->landesk;
+
+        $data_barang_now->save();
+
+        jurnalhelper::resetedit();
+
+        return redirect()->route('dashboard', ['menu' => 'data_barang']);
+    }
+
+    public function pengguna_databarang_destroy($id){
         $user = data_barang_now::findOrFail($id);
 
         $user->delete();

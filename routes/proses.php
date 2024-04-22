@@ -10,10 +10,10 @@ Route::post('login/lempar', [prosesController::class, 'login_lempar'])->name('lo
 
 // Start Admin
 // Start User Manajemen Admin
-Route::post('/admin/user_manajemen/store', [prosesController::class, 'store'])->name('admin.user_manajemen.store');
-Route::get('/admin/user_manajemen/{id}/edit', [prosesController::class, 'edit'])->name('admin.user_manajemen.edit');
-Route::post('/admin/user_manajemen/{id}', [prosesController::class, 'update'])->name('admin.user_manajemen.update');
-Route::delete('/admin/user_manajemen/{id}/delete', [prosesController::class, 'destroy'])->name('admin.user_manajemen.delete');
+Route::post('/admin/user_manajemen/store', [prosesController::class, 'admin_usermanajemen_store'])->name('admin.user_manajemen.store');
+Route::get('/admin/user_manajemen/{id}/edit', [prosesController::class, 'admin_usermanajemen_edit'])->name('admin.user_manajemen.edit');
+Route::post('/admin/user_manajemen/{id}', [prosesController::class, 'admin_usermanajemen_update'])->name('admin.user_manajemen.update');
+Route::delete('/admin/user_manajemen/{id}/delete', [prosesController::class, 'admin_usermanajemen_destroy'])->name('admin.user_manajemen.delete');
 // End User Manajemen Admin
 
 // Start Export To Excel Admin
@@ -39,9 +39,9 @@ Route::post('/penghapusan/pilihan', [prosesController::class, 'penghapusanpiliha
 
 // Start Pengguna
 // Pengguna Data Barang
-Route::post('/pengguna/data_barang/store', [prosesController::class, 'store_pengguna'])->name('pengguna.data_barang.store');
-Route::get('/pengguna/data_barang/{id}/edit', [prosesController::class, 'edit_pengguna'])->name('pengguna.data_barang.edit');
-Route::post('/pengguna/data_barang/{id}', [prosesController::class, 'update_pengguna'])->name('pengguna.data_barang.update');
-Route::get('/pengguna/data_barang/{id}/delete', [prosesController::class, 'destroy_pengguna'])->name('pengguna.data_barang.delete');
+Route::post('/pengguna/data_barang/store', [prosesController::class, 'pengguna_databarang_store'])->name('pengguna.data_barang.store');
+Route::get('/pengguna/data_barang/{id}/edit', [prosesController::class, 'pengguna_databarang_edit'])->name('pengguna.data_barang.edit');
+Route::post('/pengguna/data_barang/{id}', [prosesController::class, 'pengguna_databarang_update'])->name('pengguna.data_barang.update');
+Route::get('/pengguna/data_barang/{id}/delete', [prosesController::class, 'pengguna_databarang_destroy'])->name('pengguna.data_barang.delete');
 // End Pengguna Data Barang
 // End Pengguna

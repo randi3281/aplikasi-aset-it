@@ -58,7 +58,6 @@ class jurnalhelper
         $_SESSION['data_barang_tahun']= 'all';
     }
     public static function resetsession(){
-
         $_SESSION['data_barang_time'] = 'now';
         $_SESSION['data_barang_area']= 'all';
         $_SESSION['data_barang_bulan']= 'all';
@@ -86,7 +85,7 @@ class jurnalhelper
     }
 
     public static function resetedit(){
-
+        $_SESSION['edit'] = 'tidak';
         session(['edit' => 'tidak']);
     }
 }
