@@ -3,7 +3,7 @@
         <h5 class="text-center">Tambah User</h5>
     </div>
     <div class="card-body">
-        <form action="{{ route('proses.admin.user.store') }}" method="post">
+        <form action="{{ route('proses.admin.user_manajemen.store') }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="nama">Nama</label>

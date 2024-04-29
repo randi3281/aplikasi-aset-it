@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-11 mt-5" style="padding-left: 150px">
         <h1 class="mb-4"><b>Data Barang</b></h1>
-        <form class="mb-3" action="{{ Route('proses.data_barang_pilihan') }}" method="POST">
+        <form class="mb-3" action="{{ Route('proses.data_barang.pilihan') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="area"><b>Pilih Area : </b></label>
@@ -137,9 +137,9 @@
                         <td>{{ $data->sophos }}</td>
                         <td>{{ $data->landesk }}</td>
                         <td>
-                            <button class="btn btn-warning">Edit</button>
+                            <a href="{{route('proses.pengguna.data_barang.edit', ['id' => $data->id])}}" class="btn btn-warning">Edit</a>
                             |
-                            <button class="btn btn-danger">Hapus</button>
+                            <a href="{{route('proses.pengguna.data_barang.delete', ['id' => $data->id])}}" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
                 @endforeach

@@ -37,9 +37,9 @@
                                 <td style="height: 8px; font-size: 11pt">{{ $user->posisi }}</td>
                                 <td style="height: 8px; font-size: 11pt">{{ $user->area }}</td>
                                 <td>
-                                    <a href="{{ route('proses.admin.user.edit', $user->id) }}"
+                                    <a href="{{ route('proses.admin.user_manajemen.edit', $user->id) }}"
                                         class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('proses.admin.user.delete', $user->id) }}" method="post"
+                                    <form action="{{ route('proses.admin.user_manajemen.delete', $user->id) }}" method="post"
                                         class="d-inline">
                                         @csrf
                                         @method('delete')
