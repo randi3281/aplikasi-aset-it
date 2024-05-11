@@ -179,6 +179,10 @@ class prosesController extends Controller
         if($request->area == 'all' && $request->bulan == 'all' && $request->tahun == 'all'){
             return Excel::download(new DataBarangNowExport, 'Data Barang Sekarang.xlsx');
         } else {
+            if($_COOKIE['posisi'] == 'pengguna'){
+                $areanya = $_COOKIE['area'];
+                return Excel::download(new DataBarangExport($request->bulan, $request->tahun, $areanya), 'Data Barang ' . $areanya . " ". $request->bulan . " " . $request->tahun .'.xlsx');
+            }
             return Excel::download(new DataBarangExport($request->bulan, $request->tahun, $request->area), 'Data Barang ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
         }
     }
@@ -189,6 +193,10 @@ class prosesController extends Controller
         if($request->area == 'all' && $request->bulan == 'all' && $request->tahun == 'all'){
             return Excel::download(new MutasiNowExport, 'Mutasi Sekarang.xlsx');
         } else {
+            if($_COOKIE['posisi'] == 'pengguna'){
+                $areanya = $_COOKIE['area'];
+                return Excel::download(new MutasiExport($request->bulan, $request->tahun, $areanya), 'Data Barang ' . $areanya . " ". $request->bulan . " " . $request->tahun .'.xlsx');
+            }
             return Excel::download(new MutasiExport($request->bulan, $request->tahun, $request->area), 'Mutasi ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
         }
     }
@@ -198,6 +206,10 @@ class prosesController extends Controller
         if($request->area == 'all' && $request->bulan == 'all' && $request->tahun == 'all'){
             return Excel::download(new PenghapusanNowExport, 'Penghapusan Sekarang.xlsx');
         } else {
+            if($_COOKIE['posisi'] == 'pengguna'){
+                $areanya = $_COOKIE['area'];
+                return Excel::download(new PenghapusanExport($request->bulan, $request->tahun, $areanya), 'Data Barang ' . $areanya . " ". $request->bulan . " " . $request->tahun .'.xlsx');
+            }
             return Excel::download(new PenghapusanExport($request->bulan, $request->tahun, $request->area), 'Penghapusan ' . $request->area . " ". $request->bulan . " " . $request->tahun .'.xlsx');
         }
     }

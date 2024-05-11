@@ -109,7 +109,13 @@ class HomeController extends Controller
                         }
 
                         if($menu == 'export_to_excel'){
-                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE['tanggal']], compact('menu'));
+                            jurnalhelper::resetsession();
+                            jurnalhelper::resetedit();
+                            $data_user = user_manajemen::all();
+                            $data_barang_old = data_barang::all();
+                            $mutasi_old = mutasi::all();
+                            $penghapusan_old = penghapusan::all();
+                            return view('dashboard', ['posisi' => $_COOKIE['posisi'], 'nama' => $_COOKIE['nama'], 'nik' => $_COOKIE['nik'], 'area' => $_COOKIE['area'], 'waktu' => $_COOKIE['current_time_formatted'], 'tanggal' => $_COOKIE ['tanggal'], 'menu' => $menu], compact('data_user', 'penghapusan_old', 'mutasi_old', 'data_barang_old'));
                         }
 
                     } elseif($_COOKIE['posisi'] == 'admin'){
