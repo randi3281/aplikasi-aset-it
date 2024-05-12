@@ -66,33 +66,18 @@ class HomeController extends Controller
                                 if($_SESSION['data_barang_area'] == 'all' && $_SESSION['data_barang_bulan'] == 'all' && $_SESSION['data_barang_tahun'] == 'all'){
                                     $datanya = data_barang_now::paginate(10);
                                 } else{
-                                    if($_SESSION['data_barang_area'] == 'all'){
-                                        if($_SESSION['data_barang_bulan'] == 'all'){
+                                    if($_SESSION['data_barang_bulan'] == 'all'){
+                                        if($_SESSION['data_barang_tahun'] == 'all'){
+                                            $datanya = data_barang::paginate(10);
+                                        } else {
                                             $datanya = data_barang::where('tahun', $_SESSION['data_barang_tahun'])->paginate(10);
-                                        } elseif($_SESSION['data_barang_tahun'] == 'all'){
-                                            $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->paginate(10);
-                                        }elseif($_SESSION['data_barang_bulan'] != 'all' && $_SESSION['data_barang_tahun'] != 'all'){
-                                            $datanya = data_barang::where('tahun', $_SESSION['data_barang_tahun'])->where('bulan', $_SESSION['data_barang_bulan'])->paginate(10);
                                         }
-                                    }elseif($_SESSION['data_barang_bulan'] == 'all'){
-                                        if($_SESSION['data_barang_area'] == 'all'){
-                                            $datanya = data_barang::where('tahun', $_SESSION['data_barang_tahun'])->paginate(10);
-                                        } elseif($_SESSION['data_barang_tahun'] == 'all'){
-                                            $datanya = data_barang::where('area_user', $_SESSION['data_barang_area'])->paginate(10);
-                                        }elseif($_SESSION['data_barang_area'] != 'all' && $_SESSION['data_barang_tahun'] != 'all'){
-                                            $datanya = data_barang::where('tahun', $_SESSION['data_barang_tahun'])->where('area_user', $_SESSION['data_barang_area'])->paginate(10);
-                                        }
-                                    }elseif($_SESSION['data_barang_tahun'] == 'all'){
-                                        if($_SESSION['data_barang_area'] == 'all'){
-                                            $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->paginate(10);
-                                        } elseif($_SESSION['data_barang_bulan'] == 'all'){
-                                            $datanya = data_barang::where('area_user', $_SESSION['data_barang_area'])->paginate(10);
-                                        }elseif($_SESSION['data_barang_area'] != 'all' && $_SESSION['data_barang_bulan'] != 'all'){
-                                            $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->where('area_user', $_SESSION['data_barang_area'])->paginate(10);
-                                        }
-                                    }else{
-                                        $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->where('area_user', $_SESSION['data_barang_area'])->where('tahun', $_SESSION['data_barang_tahun'])->paginate(10);
+                                    } elseif($_SESSION['data_barang_tahun'] == 'all'){
+                                        $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->paginate(10);
+                                    } else {
+                                        $datanya = data_barang::where('bulan', $_SESSION['data_barang_bulan'])->where('tahun', $_SESSION['data_barang_tahun'])->paginate(10);
                                     }
+
                                 }
                             }
                             $data_user = user_manajemen::all();

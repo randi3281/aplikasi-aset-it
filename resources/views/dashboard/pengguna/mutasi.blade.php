@@ -6,7 +6,7 @@
             @include('dashboard.pengguna.mutasi.input')
         @endif
     </div>
-    <div class="col-md-11 mt-5" style="padding-left: 200px">
+    <div class="col-md-11 mt-5" style="padding-left: 150px">
         <h1 class="mb-4"><b>Mutasi</b></h1>
         <form class="mb-3" action="{{ Route('proses.mutasi_pilihan') }}" method="POST">
             @csrf

@@ -11,29 +11,6 @@
         <form class="mb-3" action="{{ Route('proses.data_barang.pilihan') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="area"><b>Pilih Area : </b></label>
-                <select class="form-control-sm" id="area" name="area">
-                    <option value="{{ $_SESSION['data_barang_area'] }}" name="{{ $_SESSION['data_barang_area'] }}">
-                        @php
-                            $cek_area = [];
-                            $cek_area[] = $_SESSION['data_barang_area'];
-                        @endphp
-                        {{ $_SESSION['data_barang_area'] }}
-                        @foreach ($data_user as $item)
-                            @if (!in_array($item->area, $cek_area))
-                                @php
-                                    $cek_area[] = $item->area;
-                                @endphp
-                    <option value="{{ $item->area }}" name="{{ $item->area }}">{{ $item->area }} </option>
-                    @endif
-                    @if (!in_array('all', $cek_area))
-                        @php
-                            $cek_area[] = 'all';
-                        @endphp
-                        <option value="all" name="all">all</option>
-                    @endif
-                    @endforeach
-                </select>
                 <label for="bulan" class="ms-2"><b>Bulan : </b></label>
                 <select class="form-control-sm" id="bulan" name="bulan">
                     <option value="{{ $_SESSION['data_barang_bulan'] }}" name="{{ $_SESSION['data_barang_bulan'] }}">
@@ -83,7 +60,7 @@
                 <button type="submit" class="btn btn-primary btn ms-3"><b>Submit</b></button>
             </div>
         </form>
-        <p style="font-size: 14px" class="mb-4"> <b>Keterangan : <i></b>Area : {{ $_SESSION['data_barang_area'] }},
+        <p style="font-size: 14px" class="mb-4"> <b>Keterangan : <i></b>
             Bulan :
             {{ $_SESSION['data_barang_bulan'] }}, Tahun
             :

@@ -23,21 +23,17 @@
                     </td>
                 </tr>
             @endif
-            <tr>
-                <td>
-                    <div class="form-group mx-3">
-                        <label for="tanggal_perolehan">Tanggal Perolehan</label>
-                        <input type="date" name="tanggal_perolehan" id="tanggal_perolehan" class="form-control"
-                            autofocus>
-                    </div>
-                </td>
-            </tr>
+            <td>
+                <div class="form-group mx-3">
+                    <label for="tanggal_perolehan">Tanggal Perolehan</label>
+                    <input type="date" name="tanggal_perolehan" id="tanggal_perolehan" class="form-control" autofocus>
+                </div>
+            </td>
             <tr>
                 <td>
                     <div class="form-group mx-3">
                         <label for="nama_barang_asset">Asset</label>
-                        <input type="text" name="nama_barang_asset" id="nama_barang_asset" class="form-control"
-                            autofocus>
+                        <input type="text" name="nama_barang_asset" id="nama_barang_asset" class="form-control" autofocus>
                     </div>
                 </td>
             </tr>
@@ -61,8 +57,7 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="outlet_pencatatan">Outlet Pencatatan</label>
-                        <input type="text" name="outlet_pencatatan" id="outlet_pencatatan" class="form-control"
-                            autofocus>
+                        <input type="text" name="outlet_pencatatan" id="outlet_pencatatan" class="form-control" autofocus>
                     </div>
                 </td>
             </tr>
@@ -117,7 +112,7 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="nama_komputer">Nama Komputer</label>
+                        <label for="nama_komputer">Komputer Nama</label>
                         <input type="text" name="nama_komputer" id="nama_komputer" class="form-control" autofocus>
                     </div>
                 </td>
@@ -157,7 +152,7 @@
             <tr>
                 <td>
                     <div class="form-group mx-3 d-flex">
-                        <label for="shopos" class="me-2">Shopos</label>
+                        <label for="shopos" class="me-2">Sophos</label>
                         <select name="shopos" id="shopos" class="form-control w-25 me-3">
                             <option value="iya">Iya</option>
                             <option value="tidak">Tidak</option>

@@ -17,10 +17,10 @@
         <body class="bg-warning" style="width: 3500px">
         @elseif ($menu == 'mutasi')
 
-            <body class="bg-warning" style="width: 2700px">
+            <body class="bg-warning" style="width: 3500px">
             @elseif ($menu == 'penghapusan')
 
-                <body class="bg-warning" style="width: 2900px">
+                <body class="bg-warning" style="width: 3500px">
 @endif
 <div class="container-fluid">
     <div class="row">
