@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <form action="{{ route('proses.pengguna.data_barang.update', ['id' => session('useredit')->id]) }}"
+        <form action="{{ route('proses.pengguna.penghapusan.update', ['id' => session('useredit')->id]) }}"
             method="POST">
             @csrf
 

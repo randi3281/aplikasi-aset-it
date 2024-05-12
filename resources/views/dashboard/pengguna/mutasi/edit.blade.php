@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <form action="{{ route('proses.pengguna.data_barang.update', ['id' => session('useredit')->id]) }}"
+        <form action="{{ route('proses.pengguna.penghapusan.update', ['id' => session('useredit')->id]) }}"
             method="POST">
             @csrf
 
@@ -24,6 +24,7 @@
                     </td>
                 </tr>
             @endif
+
             <tr>
                 <td>
                     <div class="form-group mx-3">
@@ -37,7 +38,7 @@
                 <td>
                     <div class="form-group mx-3">
                         <label for="nama_barang_asset">Asset</label>
-                        <input type="text" name="nama_barang_asset" id="nama_barang_asset" class="form-control"
+                        <input type="text" name="asset" id="nama_barang_asset" class="form-control"
                             value="{{ session('useredit')->asset }}">
                     </div>
                 </td>
@@ -45,8 +46,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="kode_fa_fams">Kode FA FAMS</label>
-                        <input type="text" name="kode_fa_fams" id="kode_fa_fams" class="form-control"
+                        <label for="kode_fa_fams">Kode FA</label>
+                        <input type="text" name="kode_fa" id="kode_fa_fams" class="form-control"
                             value="{{ session('useredit')->kode_fa_fams }}">
                     </div>
                 </td>
@@ -63,17 +64,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="outlet_pencatatan">Outlet Pencatatan</label>
-                        <input type="text" name="outlet_pencatatan" id="outlet_pencatatan" class="form-control"
-                            value="{{ session('useredit')->outlet_pencatatan }}">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group mx-3">
-                        <label for="outlet_actual">Outlet Actual</label>
-                        <input type="text" name="outlet_actual" id="outlet_actual" class="form-control"
+                        <label for="outlet_pencatatan">Outlet Actual</label>
+                        <input type="text" name="outlet_actual" id="outlet_pencatatan" class="form-control"
                             value="{{ session('useredit')->outlet_actual }}">
                     </div>
                 </td>
@@ -81,8 +73,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="type_barang">Type Barang</label>
-                        <input type="text" name="type_barang" id="type_barang" class="form-control"
+                        <label for="outlet_actual">Type Barang</label>
+                        <input type="text" name="type_barang" id="outlet_actual" class="form-control"
                             value="{{ session('useredit')->type_barang }}">
                     </div>
                 </td>
@@ -90,8 +82,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="location">Location</label>
-                        <input type="text" name="location" id="location" class="form-control"
+                        <label for="type_barang">Location</label>
+                        <input type="text" name="location" id="type_barang" class="form-control"
                             value="{{ session('useredit')->location }}">
                     </div>
                 </td>
@@ -99,8 +91,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="jabatan">Jabatan</label>
-                        <input type="text" name="jabatan" id="jabatan" class="form-control"
+                        <label for="location">Jabatan</label>
+                        <input type="text" name="jabatan" id="location" class="form-control"
                             value="{{ session('useredit')->jabatan }}">
                     </div>
                 </td>
@@ -108,8 +100,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="nama_user">Nama User</label>
-                        <input type="text" name="nama_user" id="nama_user" class="form-control"
+                        <label for="jabatan">User Domain</label>
+                        <input type="text" name="nama_user" id="jabatan" class="form-control"
                             value="{{ session('useredit')->nama_user }}">
                     </div>
                 </td>
@@ -117,8 +109,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="nik">NIK</label>
-                        <input type="text" name="nik" id="nik" class="form-control"
+                        <label for="nama_user">NIK</label>
+                        <input type="text" name="nik" id="nama_user" class="form-control"
                             value="{{ session('useredit')->nik }}">
                     </div>
                 </td>
@@ -126,8 +118,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="nama_komputer">Nama Komputer</label>
-                        <input type="text" name="nama_komputer" id="nama_komputer" class="form-control"
+                        <label for="nik">Komputer Nama</label>
+                        <input type="text" name="komputer_nama" id="nik" class="form-control"
                             value="{{ session('useredit')->komputer_nama }}">
                     </div>
                 </td>
@@ -135,8 +127,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="ip_address">IP Address</label>
-                        <input type="text" name="ip_address" id="ip_address" class="form-control"
+                        <label for="nama_komputer">IP Address</label>
+                        <input type="text" name="ip_address" id="nama_komputer" class="form-control"
                             value="{{ session('useredit')->ip_address }}">
                     </div>
                 </td>
@@ -144,8 +136,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="kondisi">Kondisi</label>
-                        <input type="text" name="kondisi" id="kondisi" class="form-control"
+                        <label for="ip_address">Kondisi</label>
+                        <input type="text" name="kondisi" id="ip_address" class="form-control"
                             value="{{ session('useredit')->kondisi }}">
                     </div>
                 </td>
@@ -153,8 +145,8 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="keterangan">Keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan" class="form-control"
+                        <label for="kondisi">Keterangan</label>
+                        <input type="text" name="keterangan" id="kondisi" class="form-control"
                             value="{{ session('useredit')->keterangan }}">
                     </div>
                 </td>
@@ -162,41 +154,49 @@
             <tr>
                 <td>
                     <div class="form-group mx-3">
-                        <label for="serial_number">Serial Number</label>
-                        <input type="text" name="serial_number" id="serial_number" class="form-control"
+                        <label for="keterangan">Serial Number</label>
+                        <input type="text" name="serial_number" id="keterangan" class="form-control"
                             value="{{ session('useredit')->serial_number }}">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="form-group mx-3 d-flex">
-                        <label for="sophos">Shopos: </label>
-                        <select name="sophos" class="form-control-sm me-3 ms-1" id="sophos">
-                            @if (session('useredit')->sophos == 'Iya')
-                                <option value="Iya">Iya</option>
-                                <option value="Tidak">Tidak</option>
-                            @elseif (session('useredit')->sophos == 'Tidak')
-                                <option value="Tidak">Tidak</option>
-                                <option value="Iya">Iya</option>
-                            @else
-                                <option value="Iya">Iya</option>
-                                <option value="Tidak">Tidak</option>
-                            @endif
+                    <div class="form-group mx-3">
+                        <label for="shopos" class="me-2">Sophos</label>
+                        <select name="sophos" id="shopos" class="form-control-sm w-25 me-3">
+                            <option value="Iya" {{ session('useredit')->sophos == 'Iya' ? 'selected' : '' }}>Iya</option>
+                            <option value="Tidak" {{ session('useredit')->sophos == 'Tidak' ? 'selected' : '' }}>Tidak</option>
                         </select>
-                        <label for="landesk">Landesk: </label>
-                        <select name="landesk" class="form-control-sm me-3 ms-1" id="landesk">
-                            @if (session('useredit')->landesk == 'Iya')
-                                <option value="Iya">Iya</option>
-                                <option value="Tidak">Tidak</option>
-                            @elseif (session('useredit')->landesk == 'Tidak')
-                                <option value="Tidak">Tidak</option>
-                                <option value="Iya">Iya</option>
-                            @else
-                                <option value="Iya">Iya</option>
-                                <option value="Tidak">Tidak</option>
-                            @endif
+                        <label for="landesk" class="me-2">Landesk</label>
+                        <select name="landesk" id="landesk" class="form-control-sm w-25">
+                            <option value="Iya" {{ session('useredit')->landesk == 'Iya' ? 'selected' : '' }}>Iya</option>
+                            <option value="Tidak" {{ session('useredit')->landesk == 'Tidak' ? 'selected' : '' }}>Tidak</option>
                         </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group mx-3">
+                        <label for="mutasi_asal">Mutasi Asal</label>
+                        <input type="text" name="mutasi_asal" id="mutasi_asal" class="form-control" autofocus>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group mx-3">
+                        <label for="mutasi_tujuan">Mutasi Tujuan</label>
+                        <input type="text" name="mutasi_tujuan" id="mutasi_tujuan" class="form-control" autofocus>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group mx-3">
+                        <label for="keterangan_mutasi">Keterangan Mutasi</label>
+                        <input type="text" name="keterangan_mutasi" id="keterangan_mutasi" class="form-control" autofocus>
                     </div>
                 </td>
             </tr>

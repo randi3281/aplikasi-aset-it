@@ -203,8 +203,8 @@
 
             <tr class="text-center">
                 <td>
-                    <button type="submit" class="btn btn-danger w-25 mb-2" name="bataltombol">Batal</button>
-                    <button type="submit" class="btn btn-primary w-50 mb-2" name="submittombol">Submit</button>
+                    <input type="submit" class="btn btn-danger w-25 mb-2" name="bataltombol" value="Batal">
+                    <input type="submit" class="btn btn-primary w-50 mb-2" name="submittombol" value="Submit">
                 </td>
             </tr>
         </form>

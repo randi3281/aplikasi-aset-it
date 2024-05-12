@@ -91,6 +91,7 @@
                     <th>Serial Number</th>
                     <th>Sophos</th>
                     <th>Landesk</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,6 +119,14 @@
                         <td>{{ $data->serial_number }}</td>
                         <td>{{ $data->sophos }}</td>
                         <td>{{ $data->landesk }}</td>
+
+                        <td>
+                            <a href="{{ route('proses.pengguna.penghapusan.edit', ['id' => $data->id]) }}"
+                                class="btn btn-warning">Edit</a>
+                            |
+                            <a href="{{ route('proses.pengguna.penghapusan.delete', ['id' => $data->id]) }}"
+                                class="btn btn-danger">Hapus</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

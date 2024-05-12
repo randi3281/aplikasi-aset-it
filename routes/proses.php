@@ -44,4 +44,16 @@ Route::get('/pengguna/data_barang/{id}/edit', [prosesController::class, 'penggun
 Route::post('/pengguna/data_barang/{id}', [prosesController::class, 'pengguna_databarang_update'])->name('pengguna.data_barang.update');
 Route::get('/pengguna/data_barang/{id}/delete', [prosesController::class, 'pengguna_databarang_destroy'])->name('pengguna.data_barang.delete');
 // End Pengguna Data Barang
+// Pengguna Mutasi
+Route::post('/pengguna/mutasi/store', [prosesController::class, 'pengguna_mutasi_store'])->name('pengguna.mutasi.store');
+Route::get('/pengguna/mutasi/{id}/edit', [prosesController::class, 'pengguna_mutasi_edit'])->name('pengguna.mutasi.edit');
+Route::post('/pengguna/mutasi/{id}', [prosesController::class, 'pengguna_mutasi_update'])->name('pengguna.mutasi.update');
+Route::get('/pengguna/mutasi/{id}/delete', [prosesController::class, 'pengguna_mutasi_destroy'])->name('pengguna.mutasi.delete');
+// End Pengguna Mutasi
+// Pengguna Penghapusan
+Route::post('/pengguna/penghapusan/store', [prosesController::class, 'pengguna_penghapusan_store'])->name('pengguna.penghapusan.store');
+Route::get('/pengguna/penghapusan/{id}/edit', [prosesController::class, 'pengguna_penghapusan_edit'])->name('pengguna.penghapusan.edit');
+Route::post('/pengguna/penghapusan/{id}', [prosesController::class, 'pengguna_penghapusan_update'])->name('pengguna.penghapusan.update');
+Route::get('/pengguna/penghapusan/{id}/delete', [prosesController::class, 'pengguna_penghapusan_destroy'])->name('pengguna.penghapusan.delete');
+// End Pengguna Penghapusan
 // End Pengguna

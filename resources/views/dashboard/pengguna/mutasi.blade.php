@@ -117,10 +117,10 @@
                         <td>{{ $data->keterangan_mutasi }}</td>
 
                         <td>
-                            <a href="{{ route('proses.pengguna.data_barang.edit', ['id' => $data->id]) }}"
+                            <a href="{{ route('proses.pengguna.mutasi.edit', ['id' => $data->id]) }}"
                                 class="btn btn-warning">Edit</a>
                             |
-                            <a href="{{ route('proses.pengguna.data_barang.delete', ['id' => $data->id]) }}"
+                            <a href="{{ route('proses.pengguna.mutasi.delete', ['id' => $data->id]) }}"
                                 class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
