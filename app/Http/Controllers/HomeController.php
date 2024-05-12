@@ -94,33 +94,18 @@ class HomeController extends Controller
                                 if($_SESSION['mutasi_area'] == 'all' && $_SESSION['mutasi_bulan'] == 'all' && $_SESSION['mutasi_tahun'] == 'all'){
                                     $datanya = mutasi_now::paginate(10);
                                 } else{
-                                    if($_SESSION['mutasi_area'] == 'all'){
-                                        if($_SESSION['mutasi_bulan'] == 'all'){
+                                    if($_SESSION['mutasi_bulan'] == 'all'){
+                                        if($_SESSION['mutasi_tahun'] == 'all'){
+                                            $datanya = mutasi::paginate(10);
+                                        } else {
                                             $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
-                                        } elseif($_SESSION['mutasi_tahun'] == 'all'){
-                                            $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
-                                        }elseif($_SESSION['mutasi_bulan'] != 'all' && $_SESSION['mutasi_tahun'] != 'all'){
-                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
                                         }
-                                    }elseif($_SESSION['mutasi_bulan'] == 'all'){
-                                        if($_SESSION['mutasi_area'] == 'all'){
-                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
-                                        } elseif($_SESSION['mutasi_tahun'] == 'all'){
-                                            $datanya = mutasi::where('area_user', $_SESSION['mutasi_area'])->paginate(10);
-                                        }elseif($_SESSION['mutasi_area'] != 'all' && $_SESSION['mutasi_tahun'] != 'all'){
-                                            $datanya = mutasi::where('tahun', $_SESSION['mutasi_tahun'])->where('area_user', $_SESSION['mutasi_area'])->paginate(10);
-                                        }
-                                    }elseif($_SESSION['mutasi_tahun'] == 'all'){
-                                        if($_SESSION['mutasi_area'] == 'all'){
-                                            $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
-                                        } elseif($_SESSION['mutasi_bulan'] == 'all'){
-                                            $datanya = mutasi::where('area_user', $_SESSION['mutasi_area'])->paginate(10);
-                                        }elseif($_SESSION['mutasi_area'] != 'all' && $_SESSION['mutasi_bulan'] != 'all'){
-                                            $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->where('area_user', $_SESSION['mutasi_area'])->paginate(10);
-                                        }
-                                    }else{
-                                        $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->where('area_user', $_SESSION['mutasi_area'])->where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
+                                    } elseif($_SESSION['mutasi_tahun'] == 'all'){
+                                        $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->paginate(10);
+                                    } else {
+                                        $datanya = mutasi::where('bulan', $_SESSION['mutasi_bulan'])->where('tahun', $_SESSION['mutasi_tahun'])->paginate(10);
                                     }
+
                                 }
                             }
                             $data_user = user_manajemen::all();
@@ -134,36 +119,22 @@ class HomeController extends Controller
                             if($_SESSION['penghapusan_time'] == 'now'){
                                 $datanya = penghapusan_now::paginate(10);
                             } else {
+
                                 if($_SESSION['penghapusan_area'] == 'all' && $_SESSION['penghapusan_bulan'] == 'all' && $_SESSION['penghapusan_tahun'] == 'all'){
                                     $datanya = penghapusan_now::paginate(10);
                                 } else{
-                                    if($_SESSION['penghapusan_area'] == 'all'){
-                                        if($_SESSION['penghapusan_bulan'] == 'all'){
+                                    if($_SESSION['penghapusan_bulan'] == 'all'){
+                                        if($_SESSION['penghapusan_tahun'] == 'all'){
+                                            $datanya = penghapusan::paginate(10);
+                                        } else {
                                             $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
-                                        } elseif($_SESSION['penghapusan_tahun'] == 'all'){
-                                            $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
-                                        }elseif($_SESSION['penghapusan_bulan'] != 'all' && $_SESSION['penghapusan_tahun'] != 'all'){
-                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
                                         }
-                                    }elseif($_SESSION['penghapusan_bulan'] == 'all'){
-                                        if($_SESSION['penghapusan_area'] == 'all'){
-                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
-                                        } elseif($_SESSION['penghapusan_tahun'] == 'all'){
-                                            $datanya = penghapusan::where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
-                                        }elseif($_SESSION['penghapusan_area'] != 'all' && $_SESSION['penghapusan_tahun'] != 'all'){
-                                            $datanya = penghapusan::where('tahun', $_SESSION['penghapusan_tahun'])->where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
-                                        }
-                                    }elseif($_SESSION['penghapusan_tahun'] == 'all'){
-                                        if($_SESSION['penghapusan_area'] == 'all'){
-                                            $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
-                                        } elseif($_SESSION['penghapusan_bulan'] == 'all'){
-                                            $datanya = penghapusan::where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
-                                        }elseif($_SESSION['penghapusan_area'] != 'all' && $_SESSION['penghapusan_bulan'] != 'all'){
-                                            $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->where('area_user', $_SESSION['penghapusan_area'])->paginate(10);
-                                        }
-                                    }else{
-                                        $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->where('area_user', $_SESSION['penghapusan_area'])->where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
+                                    } elseif($_SESSION['penghapusan_tahun'] == 'all'){
+                                        $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->paginate(10);
+                                    } else {
+                                        $datanya = penghapusan::where('bulan', $_SESSION['penghapusan_bulan'])->where('tahun', $_SESSION['penghapusan_tahun'])->paginate(10);
                                     }
+
                                 }
                             }
                             $data_user = user_manajemen::all();

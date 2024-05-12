@@ -33,7 +33,7 @@ Route::post('/mutasi/pilihan', [prosesController::class, 'mutasi_pilihan'])->nam
 // End Mutasi
 
 // Start Penghapusan
-Route::post('/penghapusan/pilihan', [prosesController::class, 'penghapusanpilihan'])->name('penghapusan_pilihan');
+Route::post('/penghapusan/pilihan', [prosesController::class, 'penghapusan_pilihan'])->name('penghapusan_pilihan');
 // End Penghapusan
 // End Campur
 

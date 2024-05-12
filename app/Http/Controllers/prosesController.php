@@ -226,7 +226,7 @@ class prosesController extends Controller
         $_SESSION['data_barang_tahun']= $request->tahun;
         return redirect()->route('dashboard', ['menu' => 'data_barang']);
     }
-    public function mutasipilihan(Request $request)
+    public function mutasi_pilihan(Request $request)
     {
         session_start();
         $_SESSION['mutasi_time'] = 'old';
@@ -236,7 +236,7 @@ class prosesController extends Controller
         return redirect()->route('dashboard', ['menu' => 'mutasi']);
     }
 
-    public function penghapusanpilihan(Request $request)
+    public function penghapusan_pilihan(Request $request)
     {
         session_start();
         $_SESSION['penghapusan_time'] = 'old';
